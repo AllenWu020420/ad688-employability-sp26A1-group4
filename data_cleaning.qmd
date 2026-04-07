@@ -20,9 +20,9 @@ execute:
 ## Overview
 
 This document performs all data cleaning and preprocessing steps on the
-**Lightcast 2024** job postings dataset. The output is a clean CSV file
-(`lightcast_2024_cleaned.csv`) that teammates can use directly as a
-starting point for EDA, modelling, or alternative analyses.
+**Lightcast 2024** job postings dataset. After running all cells, the
+cleaned `df` object is ready to use — copy this file and continue writing
+your own analysis directly below Section 5.
 
 ### Dataset Context
 
@@ -404,31 +404,6 @@ if COL_SALARY and COL_SALARY in df.columns:
     print(f"    Std:     ${sal.std():,.0f}")
     print(f"    10th:    ${sal.quantile(0.1):,.0f}")
     print(f"    90th:    ${sal.quantile(0.9):,.0f}")
-```
-
----
-
-## 6. Save Cleaned Data
-
-```{python}
-CLEAN_PATH = "lightcast_2024_cleaned.csv"
-df.to_csv(CLEAN_PATH, index=False)
-
-print(f"Saved: {CLEAN_PATH}")
-print(f"Shape: {df.shape[0]:,} rows × {df.shape[1]} columns")
-print(f"\nTo load in your analysis file:")
-print(f'  df = pd.read_csv("{CLEAN_PATH}")')
-print(f"\nRecommended first lines after loading:")
-print("""
-  # Salary analysis subset (only rows with salary data)
-  df_sal = df[(df["SALARY_MID"] > 10_000) & (df["SALARY_MID"] < 500_000)]
-
-  # Add state abbreviations for choropleth maps
-  STATE_ABBREV = {
-      "California":"CA", "Texas":"TX", "New York":"NY", ...
-  }
-  df["STATE_ABBR"] = df["STATE_NAME"].map(STATE_ABBREV)
-""")
 ```
 
 ---
