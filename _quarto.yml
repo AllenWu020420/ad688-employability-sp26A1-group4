@@ -1,6 +1,14 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - index.qmd
+    - introduction.qmd
+    - data_cleaning.qmd
+    - eda.qmd
+    - skill_gap_analysis.qmd
+    - ml_methods.qmd
+    - career_plan.qmd
 website:
   title: "Job Market Analysis 2024"
   navbar:
@@ -23,3 +31,7 @@ format:
   html:
     theme: cosmo
     toc: true
+
+execute:
+  eval: false
+
