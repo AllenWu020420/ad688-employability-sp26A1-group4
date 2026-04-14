@@ -1,0 +1,48 @@
+---
+title: "Business Analytics, Data Science, and Machine Learning Trends"
+subtitle: "Evaluating Personal Job Market Prospects in 2024"
+author: "GROUP IV"
+date: today
+bibliography: references.bib
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+![](./figures/website_image.png)
+
+## Introduction
+
+
+Over the past decade, the need for professionals in data science, business analytics, and machine learning has expanded significantly [@manyika2011]. As organizations increasingly depend on data to guide strategic and operational decisions, understanding current labor market dynamics has become critical for individuals planning careers in these fields.
+
+This project examines job market trends in 2024 using Lightcast job postings data [@lightcast2024]. The analysis focuses on several key questions:
+
+- Which technical and analytical skills are most frequently required?
+- What industries demonstrate the highest demand for data-related roles?
+- How do salaries differ based on geography, experience, and skill sets?
+- What are the future prospects for careers in business analytics?
+
+By addressing these questions, the study aims to provide a clearer picture of opportunities available to aspiring data professionals.
+
+
+
+## Research Rationale
+
+The rapid advancement of artificial intelligence and automation technologies has reshaped workforce demands across industries. Roles in data science and analytics are now considered among the most valuable in the modern economy [@davenport2012]. According to the U.S. Bureau of Labor Statistics [@bls2024], employment in data-related occupations is projected to grow at a rate exceeding the average for most professions.
+
+Given these trends, it is essential for job seekers to understand which competencies are most valued, where opportunities are concentrated, and how compensation varies across different contexts. This study adopts the perspective of an individual entering the data field in 2024 and uses real-world job posting data to identify patterns that can inform career decisions.
+Literature Review
+
+This analysis takes the perspective of a job seeker entering the data science field in 2024, examining real job posting data to identify trends and opportunities.
+
+## Literature Review
+
+
+Recent studies and industry reports emphasize the evolving requirements of data-related careers. Findings from sources such as the Kaggle Developer Survey indicate that programming languages like Python and SQL continue to dominate job requirements, alongside machine learning tools and frameworks [@kaggle2023; @python2024]. In addition, demand for cloud computing skills, including platforms such as AWS, Microsoft Azure, and Google Cloud, has grown steadily.
+
+Research also highlights regional differences in compensation, with major technology hubs such as San Francisco, Seattle, and New York typically offering higher salaries [@linkedin2024]. However, the increasing adoption of remote work has begun to reduce geographic barriers, allowing broader access to opportunities.
+
+Furthermore, business analytics roles are increasingly interdisciplinary, requiring not only technical proficiency but also the ability to interpret data and communicate insights effectively [@provost2013]. Employers now prioritize candidates who can connect analytical results to real-world business outcomes.
+
+## References
