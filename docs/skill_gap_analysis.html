@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Oliver Chen">
+<meta name="author" content="Zifan Chen">
 
 <title>Job Market Analysis 2024 - Skill Gap Analysis</title>
 <style>
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -101,6 +101,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -201,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oliver Chen </p>
+             <p>Zifan Chen </p>
           </div>
   </div>
     
@@ -250,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>5 = Expert</li>
 </ul>
-<div id="fa2c6177" class="cell" data-execution_count="1">
+<div id="2dc0c98b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -272,16 +275,122 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> pd.DataFrame(skills_data)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> df_skills.set_index(<span class="st">"Name"</span>)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df_skills</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Python</th>
+<th data-quarto-table-cell-role="th">SQL</th>
+<th data-quarto-table-cell-role="th">Statistics</th>
+<th data-quarto-table-cell-role="th">Data Visualization</th>
+<th data-quarto-table-cell-role="th">Excel</th>
+<th data-quarto-table-cell-role="th">Tableau/Power BI</th>
+<th data-quarto-table-cell-role="th">AWS/Azure</th>
+<th data-quarto-table-cell-role="th">Machine Learning</th>
+<th data-quarto-table-cell-role="th">AI/ML Tools</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Zifan Chen</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Jingyuan Yang</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Zhenjie Shao</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Zhuolun Wu</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Almas Tussipov</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="team-skill-visualization" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="team-skill-visualization"><span class="header-section-number">1.4</span> 4. Team Skill Visualization</h2>
-<div id="484bcd80" class="cell" data-execution_count="2">
+<div id="e4ef4a9d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_skills, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"YlGnBu"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, fmt<span class="op">=</span><span class="st">".0f"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Team Skill Levels Heatmap"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="skill_gap_analysis_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <section id="interpretation" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">1.4.1</span> Interpretation</h3>
@@ -292,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="comparing-team-skills-with-market-demand" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="comparing-team-skills-with-market-demand"><span class="header-section-number">1.5</span> 5. Comparing Team Skills with Market Demand</h2>
 <p>To compare internal capabilities with market expectations, we define a simplified benchmark based on the key skill groups identified in our EDA.</p>
-<div id="0516fb51" class="cell" data-execution_count="3">
+<div id="38ecb695" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>market_demand <span class="op">=</span> pd.Series({</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python"</span>: <span class="dv">5</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SQL"</span>: <span class="dv">5</span>,</span>
@@ -316,11 +425,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>gap_df <span class="op">=</span> gap_df.sort_values(<span class="st">"Gap"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>gap_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Team Average</th>
+<th data-quarto-table-cell-role="th">Market Demand</th>
+<th data-quarto-table-cell-role="th">Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Python</td>
+<td>3.6</td>
+<td>5</td>
+<td>1.4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">SQL</td>
+<td>3.6</td>
+<td>5</td>
+<td>1.4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">AWS/Azure</td>
+<td>3.0</td>
+<td>4</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Machine Learning</td>
+<td>3.4</td>
+<td>4</td>
+<td>0.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Statistics</td>
+<td>4.0</td>
+<td>4</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Tableau/Power BI</td>
+<td>4.2</td>
+<td>4</td>
+<td>-0.2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Data Visualization</td>
+<td>4.6</td>
+<td>4</td>
+<td>-0.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">AI/ML Tools</td>
+<td>3.6</td>
+<td>3</td>
+<td>-0.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Excel</td>
+<td>4.4</td>
+<td>3</td>
+<td>-1.4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="skill-gap-visualization" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="skill-gap-visualization"><span class="header-section-number">1.6</span> 6. Skill Gap Visualization</h2>
-<div id="29229e98" class="cell" data-execution_count="4">
+<div id="938af4ae" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>gap_df[<span class="st">"Gap"</span>], y<span class="op">=</span>gap_df.index)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Skill Gap: Market Demand vs Team Average"</span>)</span>
@@ -328,6 +512,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Skill"</span>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="skill_gap_analysis_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <section id="interpretation-1" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">1.6.1</span> Interpretation</h3>
