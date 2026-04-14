@@ -51,15 +51,15 @@ import numpy as np
 
 skills_data = {
     "Name": ["Zifan Chen", "Jingyuan Yang", "Zhenjie Shao", "Zhuolun Wu", "Almas Tussipov"],
-    "Python": [3, 3, 4, 2],
-    "SQL": [3, 5, 3, 2],
-    "Statistics": [4, 4, 4, 2],
-    "Data Visualization": [5, 5, 4, 2],
-    "Excel": [4, 5, 4, 3],
-    "Tableau/Power BI": [5, 4, 3, 1],
-    "AWS/Azure": [3, 3, 3, 1],
-    "Machine Learning": [3, 3, 4, 1],
-    "AI/ML Tools": [4, 4, 4, 1]
+    "Python": [3, 3, 4, 4, 4],
+    "SQL": [3, 5, 3, 3, 4],
+    "Statistics": [4, 4, 4, 4, 4],
+    "Data Visualization": [5, 5, 4, 4, 5],
+    "Excel": [4, 5, 4, 4, 5],
+    "Tableau/Power BI": [5, 4, 3, 4, 5],
+    "AWS/Azure": [3, 3, 3, 3, 3],
+    "Machine Learning": [3, 3, 4, 3, 4],
+    "AI/ML Tools": [4, 4, 4, 4, 2]
 }
 
 df_skills = pd.DataFrame(skills_data)
@@ -138,7 +138,7 @@ To address the identified gaps, the following actions are recommended:
 - Learn cloud platforms such as AWS or Azure
 - Develop machine learning skills using libraries like scikit-learn
 - Improve data visualization skills using Tableau, Power BI, or Plotly
-- Work on real-world projects to integrate analysis, modeling, and visualization
+- Work on real-world projects to integrate analysis, modelling, and visualization
 
 ---
 ## 8. Conclusion
