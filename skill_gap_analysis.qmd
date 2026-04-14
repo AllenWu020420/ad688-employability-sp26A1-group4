@@ -77,7 +77,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-###Interpretation
+### Interpretation
 
 The heatmap shows that the team is relatively strong in foundational skills such as Excel, Python, and data visualization. However, advanced skills such as cloud platforms, machine learning, and AI tools are relatively weak across most members.
 
@@ -124,7 +124,7 @@ plt.ylabel("Skill")
 plt.tight_layout()
 plt.show()
 ```
-###Interpretation
+### Interpretation
 
 The largest gaps appear in cloud platforms, machine learning, and AI-related tools. The team is relatively closer to market expectations in Excel, Python, and basic data analysis skills.
 
@@ -134,11 +134,11 @@ This indicates that while the team has a solid analytical foundation, there is a
 ## 7. Recommendations for Skill Development
 To address the identified gaps, the following actions are recommended:
 
-Strengthen Python and SQL proficiency across all team members
-Learn cloud platforms such as AWS or Azure
-Develop machine learning skills using libraries like scikit-learn
-Improve data visualization skills using Tableau, Power BI, or Plotly
-Work on real-world projects to integrate analysis, modeling, and visualization
+- Strengthen Python and SQL proficiency across all team members
+- Learn cloud platforms such as AWS or Azure
+- Develop machine learning skills using libraries like scikit-learn
+- Improve data visualization skills using Tableau, Power BI, or Plotly
+- Work on real-world projects to integrate analysis, modeling, and visualization
 
 ---
 ## 8. Conclusion
