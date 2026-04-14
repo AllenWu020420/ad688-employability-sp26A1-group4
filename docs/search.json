@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "skill_gap_analysis.html",
+    "href": "skill_gap_analysis.html",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "This section evaluates the gap between our team’s current technical skill levels and the skills most demanded in the 2024 job market. Building on our Exploratory Data Analysis (EDA), we focus on key skill categories in data science, business analytics, and machine learning roles. The goal is to identify strengths, highlight gaps, and provide actionable recommendations for career development.\n\n\n\nBased on our EDA of the Lightcast dataset, job postings in data and analytics roles emphasize the following skill groups:\n\nProgramming: Python, R, Scala\n\nCore Data Skills: SQL, statistics, data analysis, data visualization\n\nTraditional BI Tools: Tableau, Power BI, Excel\n\nCloud Platforms: AWS, Azure, Databricks, Snowflake\n\nAI/ML Tools: TensorFlow, PyTorch, scikit-learn, MLflow, SageMaker\n\nThese findings indicate that employers increasingly expect candidates to combine strong analytical foundations with technical and cloud-based capabilities.\n\n\n\nWe evaluated the current skill levels of each team member using a 1–5 scale:\n\n1 = Beginner\n\n2 = Basic Knowledge\n\n3 = Intermediate\n\n4 = Advanced\n\n5 = Expert\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\nskills_data = {\n    \"Name\": [\"Zifan Chen\", \"Jingyuan Yang\", \"Zhenjie Shao\", \"Zhuolun Wu\", \"Almas Tussipov\"],\n    \"Python\": [3, 3, 4, 4, 4],\n    \"SQL\": [3, 5, 3, 3, 4],\n    \"Statistics\": [4, 4, 4, 4, 4],\n    \"Data Visualization\": [5, 5, 4, 4, 5],\n    \"Excel\": [4, 5, 4, 4, 5],\n    \"Tableau/Power BI\": [5, 4, 3, 4, 5],\n    \"AWS/Azure\": [3, 3, 3, 3, 3],\n    \"Machine Learning\": [3, 3, 4, 3, 4],\n    \"AI/ML Tools\": [4, 4, 4, 4, 2]\n}\n\ndf_skills = pd.DataFrame(skills_data)\ndf_skills = df_skills.set_index(\"Name\")\ndf_skills\n\n\n\n\n\nplt.figure(figsize=(10, 6))\nsns.heatmap(df_skills, annot=True, cmap=\"YlGnBu\", linewidths=0.5, fmt=\".0f\")\nplt.title(\"Team Skill Levels Heatmap\")\nplt.tight_layout()\nplt.show()\n\n\n\nThe heatmap shows that the team is relatively strong in foundational skills such as Excel, Python, and data visualization. However, advanced skills such as cloud platforms, machine learning, and AI tools are relatively weak across most members.\nThis suggests that the team is well-prepared for basic data analysis tasks but may face challenges when applying advanced analytics techniques in real-world business environments.\n\n\n\n\nTo compare internal capabilities with market expectations, we define a simplified benchmark based on the key skill groups identified in our EDA.\n\nmarket_demand = pd.Series({\n    \"Python\": 5,\n    \"SQL\": 5,\n    \"Statistics\": 4,\n    \"Data Visualization\": 4,\n    \"Excel\": 3,\n    \"Tableau/Power BI\": 4,\n    \"AWS/Azure\": 4,\n    \"Machine Learning\": 4,\n    \"AI/ML Tools\": 3\n}, name=\"Market Demand\")\n\nteam_average = df_skills.mean(axis=0).round(2)\n\ngap_df = pd.DataFrame({\n    \"Team Average\": team_average,\n    \"Market Demand\": market_demand\n})\n\ngap_df[\"Gap\"] = (gap_df[\"Market Demand\"] - gap_df[\"Team Average\"]).round(2)\ngap_df = gap_df.sort_values(\"Gap\", ascending=False)\n\ngap_df\n\n\n\n\n\nplt.figure(figsize=(10, 6))\nsns.barplot(x=gap_df[\"Gap\"], y=gap_df.index)\nplt.title(\"Skill Gap: Market Demand vs Team Average\")\nplt.xlabel(\"Gap Size\")\nplt.ylabel(\"Skill\")\nplt.tight_layout()\nplt.show()\n\n\n\nThe largest gaps appear in cloud platforms, machine learning, and AI-related tools. The team is relatively closer to market expectations in Excel, Python, and basic data analysis skills.\nThis indicates that while the team has a solid analytical foundation, there is a need to strengthen more advanced technical capabilities to remain competitive in the job market.\n\n\n\n\nTo address the identified gaps, the following actions are recommended:\n\nStrengthen Python and SQL proficiency across all team members\nLearn cloud platforms such as AWS or Azure\nDevelop machine learning skills using libraries like scikit-learn\nImprove data visualization skills using Tableau, Power BI, or Plotly\nWork on real-world projects to integrate analysis, modelling, and visualization\n\n\n\n\nOverall, the team demonstrates a strong foundation in core analytics skills. However, gaps in advanced technical areas such as cloud computing and machine learning suggest the need for continued skill development.\nBy aligning learning efforts with market demand, the team can significantly improve its competitiveness in business analytics and data science roles."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#purpose",
+    "href": "skill_gap_analysis.html#purpose",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "This section evaluates the gap between our team’s current technical skill levels and the skills most demanded in the 2024 job market. Building on our Exploratory Data Analysis (EDA), we focus on key skill categories in data science, business analytics, and machine learning roles. The goal is to identify strengths, highlight gaps, and provide actionable recommendations for career development."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#market-skill-demand-from-eda",
+    "href": "skill_gap_analysis.html#market-skill-demand-from-eda",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "Based on our EDA of the Lightcast dataset, job postings in data and analytics roles emphasize the following skill groups:\n\nProgramming: Python, R, Scala\n\nCore Data Skills: SQL, statistics, data analysis, data visualization\n\nTraditional BI Tools: Tableau, Power BI, Excel\n\nCloud Platforms: AWS, Azure, Databricks, Snowflake\n\nAI/ML Tools: TensorFlow, PyTorch, scikit-learn, MLflow, SageMaker\n\nThese findings indicate that employers increasingly expect candidates to combine strong analytical foundations with technical and cloud-based capabilities."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#team-skill-assessment",
+    "href": "skill_gap_analysis.html#team-skill-assessment",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "We evaluated the current skill levels of each team member using a 1–5 scale:\n\n1 = Beginner\n\n2 = Basic Knowledge\n\n3 = Intermediate\n\n4 = Advanced\n\n5 = Expert\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\nskills_data = {\n    \"Name\": [\"Zifan Chen\", \"Jingyuan Yang\", \"Zhenjie Shao\", \"Zhuolun Wu\", \"Almas Tussipov\"],\n    \"Python\": [3, 3, 4, 4, 4],\n    \"SQL\": [3, 5, 3, 3, 4],\n    \"Statistics\": [4, 4, 4, 4, 4],\n    \"Data Visualization\": [5, 5, 4, 4, 5],\n    \"Excel\": [4, 5, 4, 4, 5],\n    \"Tableau/Power BI\": [5, 4, 3, 4, 5],\n    \"AWS/Azure\": [3, 3, 3, 3, 3],\n    \"Machine Learning\": [3, 3, 4, 3, 4],\n    \"AI/ML Tools\": [4, 4, 4, 4, 2]\n}\n\ndf_skills = pd.DataFrame(skills_data)\ndf_skills = df_skills.set_index(\"Name\")\ndf_skills"
+  },
+  {
+    "objectID": "skill_gap_analysis.html#team-skill-visualization",
+    "href": "skill_gap_analysis.html#team-skill-visualization",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "plt.figure(figsize=(10, 6))\nsns.heatmap(df_skills, annot=True, cmap=\"YlGnBu\", linewidths=0.5, fmt=\".0f\")\nplt.title(\"Team Skill Levels Heatmap\")\nplt.tight_layout()\nplt.show()\n\n\n\nThe heatmap shows that the team is relatively strong in foundational skills such as Excel, Python, and data visualization. However, advanced skills such as cloud platforms, machine learning, and AI tools are relatively weak across most members.\nThis suggests that the team is well-prepared for basic data analysis tasks but may face challenges when applying advanced analytics techniques in real-world business environments."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#comparing-team-skills-with-market-demand",
+    "href": "skill_gap_analysis.html#comparing-team-skills-with-market-demand",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "To compare internal capabilities with market expectations, we define a simplified benchmark based on the key skill groups identified in our EDA.\n\nmarket_demand = pd.Series({\n    \"Python\": 5,\n    \"SQL\": 5,\n    \"Statistics\": 4,\n    \"Data Visualization\": 4,\n    \"Excel\": 3,\n    \"Tableau/Power BI\": 4,\n    \"AWS/Azure\": 4,\n    \"Machine Learning\": 4,\n    \"AI/ML Tools\": 3\n}, name=\"Market Demand\")\n\nteam_average = df_skills.mean(axis=0).round(2)\n\ngap_df = pd.DataFrame({\n    \"Team Average\": team_average,\n    \"Market Demand\": market_demand\n})\n\ngap_df[\"Gap\"] = (gap_df[\"Market Demand\"] - gap_df[\"Team Average\"]).round(2)\ngap_df = gap_df.sort_values(\"Gap\", ascending=False)\n\ngap_df"
+  },
+  {
+    "objectID": "skill_gap_analysis.html#skill-gap-visualization",
+    "href": "skill_gap_analysis.html#skill-gap-visualization",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "plt.figure(figsize=(10, 6))\nsns.barplot(x=gap_df[\"Gap\"], y=gap_df.index)\nplt.title(\"Skill Gap: Market Demand vs Team Average\")\nplt.xlabel(\"Gap Size\")\nplt.ylabel(\"Skill\")\nplt.tight_layout()\nplt.show()\n\n\n\nThe largest gaps appear in cloud platforms, machine learning, and AI-related tools. The team is relatively closer to market expectations in Excel, Python, and basic data analysis skills.\nThis indicates that while the team has a solid analytical foundation, there is a need to strengthen more advanced technical capabilities to remain competitive in the job market."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#recommendations-for-skill-development",
+    "href": "skill_gap_analysis.html#recommendations-for-skill-development",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "To address the identified gaps, the following actions are recommended:\n\nStrengthen Python and SQL proficiency across all team members\nLearn cloud platforms such as AWS or Azure\nDevelop machine learning skills using libraries like scikit-learn\nImprove data visualization skills using Tableau, Power BI, or Plotly\nWork on real-world projects to integrate analysis, modelling, and visualization"
+  },
+  {
+    "objectID": "skill_gap_analysis.html#conclusion",
+    "href": "skill_gap_analysis.html#conclusion",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "Overall, the team demonstrates a strong foundation in core analytics skills. However, gaps in advanced technical areas such as cloud computing and machine learning suggest the need for continued skill development.\nBy aligning learning efforts with market demand, the team can significantly improve its competitiveness in business analytics and data science roles."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Business Analytics, Data Science, and Machine Learning Trends",
+    "section": "1 Introduction",
+    "text": "1 Introduction\nOver the past decade, the need for professionals in data science, business analytics, and machine learning has expanded significantly (manyika2011?). As organizations increasingly depend on data to guide strategic and operational decisions, understanding current labor market dynamics has become critical for individuals planning careers in these fields.\nThis project examines job market trends in 2024 using Lightcast job postings data (lightcast2024?). The analysis focuses on several key questions:\n\nWhich technical and analytical skills are most frequently required?\nWhat industries demonstrate the highest demand for data-related roles?\nHow do salaries differ based on geography, experience, and skill sets?\nWhat are the future prospects for careers in business analytics?\n\nBy addressing these questions, the study aims to provide a clearer picture of opportunities available to aspiring data professionals."
+  },
+  {
+    "objectID": "index.html#research-rationale",
+    "href": "index.html#research-rationale",
+    "title": "Business Analytics, Data Science, and Machine Learning Trends",
+    "section": "2 Research Rationale",
+    "text": "2 Research Rationale\nThe rapid advancement of artificial intelligence and automation technologies has reshaped workforce demands across industries. Roles in data science and analytics are now considered among the most valuable in the modern economy (davenport2012?). According to the U.S. Bureau of Labor Statistics (bls2024?), employment in data-related occupations is projected to grow at a rate exceeding the average for most professions.\nGiven these trends, it is essential for job seekers to understand which competencies are most valued, where opportunities are concentrated, and how compensation varies across different contexts. This study adopts the perspective of an individual entering the data field in 2024 and uses real-world job posting data to identify patterns that can inform career decisions. Literature Review\nThis analysis takes the perspective of a job seeker entering the data science field in 2024, examining real job posting data to identify trends and opportunities."
+  },
+  {
+    "objectID": "index.html#literature-review",
+    "href": "index.html#literature-review",
+    "title": "Business Analytics, Data Science, and Machine Learning Trends",
+    "section": "3 Literature Review",
+    "text": "3 Literature Review\nRecent studies and industry reports emphasize the evolving requirements of data-related careers. Findings from sources such as the Kaggle Developer Survey indicate that programming languages like Python and SQL continue to dominate job requirements, alongside machine learning tools and frameworks (kaggle2023?; python2024?). In addition, demand for cloud computing skills, including platforms such as AWS, Microsoft Azure, and Google Cloud, has grown steadily.\nResearch also highlights regional differences in compensation, with major technology hubs such as San Francisco, Seattle, and New York typically offering higher salaries (linkedin2024?). However, the increasing adoption of remote work has begun to reduce geographic barriers, allowing broader access to opportunities.\nFurthermore, business analytics roles are increasingly interdisciplinary, requiring not only technical proficiency but also the ability to interpret data and communicate insights effectively (provost2013?). Employers now prioritize candidates who can connect analytical results to real-world business outcomes."
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "Business Analytics, Data Science, and Machine Learning Trends",
+    "section": "4 References",
+    "text": "4 References"
+  }
+]
