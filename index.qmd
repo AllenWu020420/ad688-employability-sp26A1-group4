@@ -18,10 +18,10 @@ Over the past decade, the need for professionals in data science, business analy
 
 This project examines job market trends in 2024 using Lightcast job postings data [@lightcast2024]. The analysis focuses on several key questions:
 
-- Which technical and analytical skills are most frequently required?
-- What industries demonstrate the highest demand for data-related roles?
-- How do salaries differ based on geography, experience, and skill sets?
-- What are the future prospects for careers in business analytics?
+- What are the most in-demand skills for data science, business analytics, and ML roles?
+- Have job descriptions evolved in 2024 to require AI/ML expertise?
+- What industries are hiring the most data scientists and why?
+- What is the career outlook for business analytics professionals?
 
 By addressing these questions, the study aims to provide a clearer picture of opportunities available to aspiring data professionals.
 

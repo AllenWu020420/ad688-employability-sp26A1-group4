@@ -209,3 +209,4 @@ __marimo__/
 /.quarto/
 lightcast_2024.csv
 lightcast_2024.csv
+*.csv

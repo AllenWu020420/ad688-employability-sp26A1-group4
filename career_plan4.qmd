@@ -1,0 +1,209 @@
+---
+title: "AD688 NLP Analysis - Clean Version"
+author: "GROUP IV"
+format:
+  html:
+    toc: true
+    theme: cosmo
+    embed-resources: true
+execute:
+  echo: false
+  eval: true
+---
+
+***
+## Section D - Key Findings Summary
+
+```{python}
+# ── D. Print consolidated findings ────────────────────────────────────────────
+sep = "=" * 70
+print(sep)
+print(" KEY FINDINGS — AD688 Final EDA")
+print(sep)
+
+print("""
+DATASET OVERVIEW
+----------------------------------
+- Raw: 72,498 rows × 131 columns  |  Cleaned: 67,572 rows × 117 columns
+- Date range: 2024-05-01 → 2024-09-30  (5 months)
+- Scope: data / analytics / tech occupations (Lightcast pre-filter)
+""")
+
+print("""
+TOPIC 2.1 — AI vs. Non-AI Careers
+----------------------------------
+1. Classification breakdown (3-tier combined classifier):
+   - Traditional Analytics / BI        57,870  (85.6%)
+   - Advanced Analytics / Engineering   9,398  (13.9%)
+   - AI/ML Core                           304   (0.4%)
+   → Only 1.8% of postings explicitly list specific ML framework skills
+     (TensorFlow, PyTorch, Keras, etc.).
+   → All 304 AI/ML Core jobs were flagged by STRICT TITLE KEYWORDS —
+     the Lightcast LOT taxonomy flagged ZERO as AI/ML Core,
+     confirming the taxonomy is too broad to distinguish true AI roles.
+
+2. Salary gradient (confirmed):
+   Advanced Analytics / Engineering   Median ,000  (P25 k  P75 k)
+   AI/ML Core                         Median ,000  (P25 $ 97k  P75 k)
+   Traditional Analytics / BI         Median ,000  (P25 $ 75k  P75 k)
+   → Counter-intuitive: Advanced Analytics (architects, senior data engineers)
+     out-earns labeled 'AI/ML Core' roles — likely due to seniority mix.
+     The salary premium for AI roles exists but is less extreme than expected.
+
+3. Remote work — SURPRISING finding:
+   Fully Remote:  AI/ML Core 6.6%  |  Advanced 25.0%  |  Traditional 16.4%
+   On-Site:       AI/ML Core 13.2% |  Advanced  1.1%  |  Traditional  1.6%
+   → AI/ML Core roles are the LEAST remote and MOST on-site of the three tiers.
+     Advanced Analytics/Engineering is the most remote-friendly tier (25%).
+     ~78% of all postings do not specify remote type.
+""")
+
+print("""
+SECTION B — AI/ML CORE DEEP DIVE
+---------------------------------
+4. Monthly growth trend (AI/ML Core):
+   May 51 → Jun 60 → Jul 60 → Aug 65 → Sep 68  (+33% over 5 months)
+   Market share: 0.37% (May) → 0.47% (Sep)
+   → Despite tiny absolute numbers, AI/ML Core postings show a consistent
+     upward trend throughout the observation window.
+
+5. Geographic distribution (AI/ML Core volume):
+   Top states: Texas, California, Virginia, North Carolina, Illinois,
+               Maryland, Pennsylvania, New York
+   Top by concentration: Maryland, Washington D.C., Connecticut, Alabama,
+               Minnesota lead in AI/ML Core share relative to total postings.
+   → AI/ML Core is NOT exclusively a coastal/tech-hub phenomenon.
+
+6. Industry distribution (AI/ML Core):
+   Highest AI/ML Core CONCENTRATION by industry (min 200 postings):
+   Transportation & Warehousing > Mining/Oil & Gas > Information > Finance
+   → Surprisingly, Transportation & Warehousing has the highest ML-tool
+     requirement rate (1.44%), ahead of Information (0.92%) and Finance (0.90%).
+     This likely reflects autonomous vehicle, route optimization, and logistics AI.
+
+7. Top companies hiring AI/ML Core: Honu Services, Capgemini, Penske,
+   Deloitte, Disney, Mayo Clinic, Nestlé, Cognizant, US Bank, Travelers
+   → Mix of consulting firms, healthcare, automotive, and financial services.
+
+8. Top skills in AI/ML Core: Data Science, Machine Learning, Python,
+   Statistics, AI, Mathematics, AWS, Azure, Generative AI, Computer Science
+   → Core ML skills + cloud platforms dominate; Generative AI already appears
+     in top 25 skills, reflecting 2024 market shift.
+""")
+
+print("""
+TOPIC 2.5 — BA / Data Science / ML Trends
+------------------------------------------
+9.  Overall posting volume:
+    May 13,897 → Jun 13,159 → Jul 11,904 → Aug 14,221 → Sep 14,390
+    → Volume dipped in July (summer slowdown) but recovered strongly by Sep.
+
+10. Occupation growth (May → Sep 2024):
+    Business / Management Analyst        +51.4%  (fastest growing)
+    Data / Data Mining Analyst           +11.0%
+    Clinical Analyst                      -3.4%
+    Business Intelligence Analyst         -4.5%
+    Computer Systems Engineer/Architect  -11.2%
+    Market Research Analyst              -15.0%
+    → Demand for generalist business analytics roles surged while
+      specialized engineering and BI roles declined.
+
+11. Industry growth (May → Sep 2024):
+    Information                           +33.2%
+    Finance and Insurance                 +15.2%
+    Wholesale Trade                       +14.5%
+    Health Care and Social Assistance      +7.7%
+    Professional/Scientific/Technical     -1.9%
+    Administrative & Support Services     -5.8%
+    → Information and Finance are the fastest-growing employers of
+      data/tech talent; traditionally dominant PSTS sector is flat.
+
+12. AI/ML tool skill penetration (% of postings, by industry):
+    Transportation & Warehousing 1.44% | Mining 1.22% | Information 0.92%
+    Finance 0.90% | PSTS 0.67% | Education 0.66%
+    → Overall penetration is very low (<2%) and FLAT across the 5-month
+      window — AI adoption in job postings was NOT accelerating in 2024H2.
+
+13. Salary trend:
+    May ,500 → Jun ,000 → Jul ,200 → Aug ,685 → Sep ,000
+    → Salary dipped during summer (typical hiring cycle pattern) then
+      partially recovered, ending below the May peak. No clear upward trend
+      in the short observation window.
+""")
+
+print(sep)
+```
+***
+## Section E - NLP Analysis — Job Description Insights
+#This section extends the analysis beyond structured variables by applying Natural Language Processing (NLP) techniques to job descriptions.
+#The goal is to extract key skills, understand employer requirements, and identify hidden patterns in unstructured text data.
+
+```{python}
+import re
+def clean_text(text):
+    text = str(text).lower()
+    text = re.sub(r'<[^>]+>', ' ', text)   
+    text = re.sub(r'[^a-z\s]', ' ', text)  
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+text_col = next((c for c in df.columns if "desc" in c.lower()), None)
+
+if text_col is None:
+    text_data = df["TITLE_RAW"].dropna().astype(str)
+else:
+    text_data = df[text_col].apply(clean_text).dropna().astype(str)
+
+text_data = text_data[text_data.str.len() > 2]
+```
+```{python}
+vectorizer = CountVectorizer(stop_words='english', max_features=20)
+text_data = text_data.dropna().astype(str)
+text_data = text_data[text_data.str.len() > 2]
+X = vectorizer.fit_transform(text_data)
+
+word_counts = pd.DataFrame({
+    "word": vectorizer.get_feature_names_out(),
+    "count": X.toarray().sum(axis=0)
+}).sort_values(by="count", ascending=False)
+
+word_counts
+```
+```{python}
+tfidf = TfidfVectorizer(stop_words='english', max_features=20)
+X_tfidf = tfidf.fit_transform(text_data)
+
+tfidf_scores = pd.DataFrame({
+    "word": tfidf.get_feature_names_out(),
+    "score": X_tfidf.toarray().mean(axis=0)
+}).sort_values(by="score", ascending=False)
+
+tfidf_scores
+```
+```{python}
+skills = ["python","sql","excel","machine learning","tableau","power bi","communication"]
+
+skill_counts = {s: text_data.str.contains(s).sum() for s in skills}
+
+skill_df = pd.DataFrame({
+    "skill": skill_counts.keys(),
+    "count": skill_counts.values()
+}).sort_values(by="count", ascending=False)
+
+skill_df
+```
+```{python}
+import matplotlib.pyplot as plt
+
+skill_df_sorted = skill_df.sort_values(by="count")
+
+plt.figure()
+plt.barh(skill_df_sorted["skill"], skill_df_sorted["count"])
+plt.title("Top Skills in Job Descriptions")
+plt.show()
+```
+```{python}
+df_salary = df.dropna(subset=["SALARY_MID"])
+df_salary["has_python"] = df_salary["TITLE_RAW"].astype(str).str.contains("python", na=False)
+df_salary.groupby("has_python")["SALARY_MID"].mean().reset_index()
+```

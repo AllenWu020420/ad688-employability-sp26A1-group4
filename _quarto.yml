@@ -9,6 +9,9 @@ project:
     - skill_gap_analysis.qmd
     - ml_methods.qmd
     - career_plan.qmd
+    - career_plan2.qmd
+    - career_plan3.qmd
+    - career_plan4.qmd
 website:
   title: "Job Market Analysis 2024"
   navbar:
@@ -25,8 +28,17 @@ website:
         text: "Skill Gap Analysis"
       - href: ml_methods.qmd
         text: "Predictive Modeling"
-      - href: career_plan.qmd
-        text: "Career Strategy"
+      - text: "Career Strategy"
+        menu:
+          - text: "AI Tier Classification"
+            href: career_plan.qmd
+          - text: "AI/ML Core Deep Dive"
+            href: career_plan2.qmd
+          - text: "Temporal & Industry Trends"
+            href: career_plan3.qmd 
+          - text: "Key Findings & Summary"
+            href: career_plan4.qmd                       
+          
 format:
   html:
     theme: cosmo

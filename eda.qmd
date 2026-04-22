@@ -18,7 +18,7 @@ execute:
 **Research Topics:** 2.1 AI vs. Non-AI Careers · 2.5 Business Analytics, Data Science, and ML Trends  
 **Dataset:** Lightcast 2024 Job Postings (data/analytics/tech occupations, ~72k rows)
 
----
+
 
 ## Notebook Structure
 | Section | Topic | Key Questions |
@@ -114,7 +114,7 @@ print(f"Date range: {df['POSTED_DT'].min().date()} → {df['POSTED_DT'].max().da
 print(f"Columns kept: {df.shape[1]}")
 ```
 
----
+
 ## Section A · AI Tier Classification (Topic 2.1)
 **Strategy:** 3-tier label built from Lightcast's own taxonomy + strict title keywords + strict ML tool skills.  
 Tiers: `AI/ML Core` → `Advanced Analytics / Engineering` → `Traditional Analytics / BI`
@@ -344,7 +344,7 @@ if "SKILLS_NAME" in df.columns:
     fig.show()
 ```
 
----
+
 ## Section B · AI/ML Core Deep Dive
 True AI/ML Core jobs represent only ~0.4% of data/tech postings.  
 This section examines **where they are, whether they're growing, and which industries host them.**
@@ -529,7 +529,7 @@ if "REMOTE_TYPE_NAME" in ai_core.columns:
     fig.show()
 ```
 
----
+
 ## Section C · Temporal & Industry Trends (Topic 2.5)
 **Focus:** How is the data/analytics/tech job market evolving across May–September 2024?  
 Key dimensions: industry growth, occupation trends, emerging/declining titles, skill demand evolution.
@@ -776,7 +776,7 @@ if "AI_TIER" in df.columns:
     fig.show()
 ```
 
----
+
 ## Section D · Key Findings Summary
 
 ```{python}
@@ -788,7 +788,7 @@ print(sep)
 
 print("""
 DATASET OVERVIEW
-----------------------------------
+
 - Raw: 72,498 rows × 131 columns  |  Cleaned: 67,572 rows × 117 columns
 - Date range: 2024-05-01 → 2024-09-30  (5 months)
 - Scope: data / analytics / tech occupations (Lightcast pre-filter)
@@ -796,7 +796,7 @@ DATASET OVERVIEW
 
 print("""
 TOPIC 2.1 — AI vs. Non-AI Careers
-----------------------------------
+
 1. Classification breakdown (3-tier combined classifier):
    - Traditional Analytics / BI        57,870  (85.6%)
    - Advanced Analytics / Engineering   9,398  (13.9%)
@@ -825,7 +825,7 @@ TOPIC 2.1 — AI vs. Non-AI Careers
 
 print("""
 SECTION B — AI/ML CORE DEEP DIVE
----------------------------------
+
 4. Monthly growth trend (AI/ML Core):
    May 51 → Jun 60 → Jul 60 → Aug 65 → Sep 68  (+33% over 5 months)
    Market share: 0.37% (May) → 0.47% (Sep)
@@ -858,7 +858,7 @@ SECTION B — AI/ML CORE DEEP DIVE
 
 print("""
 TOPIC 2.5 — BA / Data Science / ML Trends
-------------------------------------------
+
 9.  Overall posting volume:
     May 13,897 → Jun 13,159 → Jul 11,904 → Aug 14,221 → Sep 14,390
     → Volume dipped in July (summer slowdown) but recovered strongly by Sep.
