@@ -7,7 +7,7 @@ format:
     number-sections: true
 execute:
   eval: true
-  echo: true
+  echo: false
   warning: false
   message: false
 ---
