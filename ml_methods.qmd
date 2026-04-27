@@ -1,16 +1,14 @@
 ---
 title: "Machine Learning"
+author: "GROUP IV"
 format:
   html:
-    theme: cosmo
     toc: true
-    number-sections: true
+    theme: cosmo
+    embed-resources: true
 execute:
-  echo: true
-  warning: false
-  message: false
+  echo: false
   eval: true
-jupyter: python3
 ---
 
 # Machine Learning

@@ -7,10 +7,10 @@ format:
     toc: true
     toc-depth: 3
     code-fold: false
-    self-contained: true
+    self-contained: false
 execute:
-  eval: false
-  echo: true
+  eval: true
+  echo: false
   warning: false
 ---
 
@@ -38,9 +38,6 @@ execute:
 
 ```{python}
 import subprocess, sys
-for pkg in ["gdown", "plotly", "kaleido"]:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", pkg])
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -662,7 +659,9 @@ if "SKILLS_NAME" in df.columns:
         "Core Data Skills":["sql","data analysis","data visualization","statistics"],
     }
 
-    months = sorted([m for m in df["POSTED_MONTH"].unique() if m != "NaT"])
+    df["POSTED_MONTH"] = pd.to_datetime(df["POSTED_MONTH"], errors="coerce")
+
+    months = sorted(df["POSTED_MONTH"].dropna().unique())
     records = []
     for m in months:
         mdf = df[df["POSTED_MONTH"] == m]

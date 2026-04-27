@@ -1,20 +1,15 @@
 ---
-title: "AD688 Group Project — Data Cleaning & Preprocessing"
+title: "Data Cleaning & Preprocessing"
 author: "GROUP IV"
-date: today
 format:
   html:
-    theme: cosmo
     toc: true
-    toc-depth: 3
-    code-fold: false
-    code-tools: true
-    highlight-style: github
-    self-contained: true
+    theme: cosmo
+    embed-resources: true
 execute:
-  echo: true
-  warning: false
-  message: false
+  echo: false
+  eval: true
+  
 ---
 
 ## Overview
