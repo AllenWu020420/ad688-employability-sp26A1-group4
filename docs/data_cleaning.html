@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jingyuan Yang">
+<meta name="author" content="GROUP IV">
 <meta name="dcterms.date" content="2026-04-27">
 
 <title>Job Market Analysis 2024 - AD688 Group Project — Data Cleaning &amp; Preprocessing</title>
@@ -4812,7 +4812,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Jingyuan Yang </p>
+             <p>GROUP IV </p>
           </div>
   </div>
     
@@ -4876,7 +4876,7 @@ vertical-align: -.125em;
 </section>
 <section id="install-load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-load-packages">0. Install &amp; Load Packages</h2>
-<div id="4c0c2fab" class="cell" data-execution_count="1">
+<div id="46023879" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess, sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>required <span class="op">=</span> [<span class="st">&quot;gdown&quot;</span>, <span class="st">&quot;pandas&quot;</span>, <span class="st">&quot;numpy&quot;</span>, <span class="st">&quot;missingno&quot;</span>, <span class="st">&quot;matplotlib&quot;</span>, <span class="st">&quot;seaborn&quot;</span>]</span>
@@ -4899,7 +4899,7 @@ vertical-align: -.125em;
 </section>
 <section id="download-load-raw-data" class="level2">
 <h2 class="anchored" data-anchor-id="download-load-raw-data">1. Download &amp; Load Raw Data</h2>
-<div id="0ef65153" class="cell" data-execution_count="2">
+<div id="848f79e3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gdown, os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>FILE_ID <span class="op">=</span> <span class="st">&quot;1V2GCHGt2dkFGqVBeoUFckU4IhUgk4ocQ&quot;</span></span>
@@ -4923,7 +4923,7 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="raw-data-inspection">2. Raw Data Inspection</h2>
 <section id="column-list-dtypes" class="level3">
 <h3 class="anchored" data-anchor-id="column-list-dtypes">2.1 Column List &amp; Dtypes</h3>
-<div id="011de507" class="cell" data-execution_count="3">
+<div id="f8898c4f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Total columns: </span><span class="sc">{</span>df_raw<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Dtype summary:&quot;</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_raw.dtypes.value_counts().to_string())</span>
@@ -4934,7 +4934,7 @@ vertical-align: -.125em;
 </section>
 <section id="missing-value-profile" class="level3">
 <h3 class="anchored" data-anchor-id="missing-value-profile">2.2 Missing Value Profile</h3>
-<div id="e88705a9" class="cell" data-execution_count="4">
+<div id="e06f09d9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Several columns are intentionally high-missing:</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   SALARY / SALARY_FROM / SALARY_TO  ~55-58%  (employers often omit salary)</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   LIGHTCAST_SECTORS_NAME            ~75%     (sector taxonomy coverage gap)</span></span>
@@ -4952,7 +4952,7 @@ vertical-align: -.125em;
 </section>
 <section id="missing-value-heatmap" class="level3">
 <h3 class="anchored" data-anchor-id="missing-value-heatmap">2.3 Missing Value Heatmap</h3>
-<div id="986d1898" class="cell" data-execution_count="5">
+<div id="71e053cd" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>msno.heatmap(df_raw, cmap<span class="op">=</span><span class="st">&quot;coolwarm&quot;</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Missing Values Correlation Heatmap — Raw Data&quot;</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
@@ -4962,7 +4962,7 @@ vertical-align: -.125em;
 </section>
 <section id="basic-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="basic-statistics">2.4 Basic Statistics</h3>
-<div id="06823037" class="cell" data-execution_count="6">
+<div id="7ae9cce2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;=== Numeric Columns ===&quot;</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>display(df_raw.describe(include<span class="op">=</span>[np.number]).T)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4977,7 +4977,7 @@ vertical-align: -.125em;
 </section>
 <section id="data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning">3. Data Cleaning</h2>
-<div id="ba2672b9" class="cell" data-execution_count="7">
+<div id="2d1d86ae" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_raw.copy()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Starting shape: </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -4990,7 +4990,7 @@ vertical-align: -.125em;
 <li><code>SOC_2021_2</code> through <code>SOC_2021_5</code> (and <code>_NAME</code> variants) — current occupation classification</li>
 <li>All <code>LOT_*</code> occupation taxonomy columns</li>
 </ul>
-<div id="a8765f62" class="cell" data-execution_count="8">
+<div id="3bba725e" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Internal metadata / tracking</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;URL&quot;</span>, <span class="st">&quot;ACTIVE_URLS&quot;</span>, <span class="st">&quot;ACTIVE_SOURCES_INFO&quot;</span>,</span>
@@ -5012,7 +5012,7 @@ vertical-align: -.125em;
 <h3 class="anchored" data-anchor-id="drop-high-missing-columns-with-salary-protection">3.2 Drop High-Missing Columns (with Salary Protection)</h3>
 <p>We drop columns where <strong>more than 50 % of values are missing</strong>, but <strong>explicitly protect</strong> salary and education columns from this rule.</p>
 <p><strong>Why protect salary columns?</strong> <code>SALARY</code>, <code>SALARY_FROM</code>, and <code>SALARY_TO</code> are each ~55–58 % missing because many employers choose not to post salary information — this is normal for job postings data, not a data quality issue. The remaining ~42 % (≈ 30,000 rows) provides a sufficient sample for salary analysis. Dropping them would silently break all downstream salary work.</p>
-<div id="7eca2ac1" class="cell" data-execution_count="9">
+<div id="e103e10a" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Columns to protect from the &gt;50% missing drop rule</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>PROTECT_COLS <span class="op">=</span> [</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;SALARY&quot;</span>, <span class="st">&quot;SALARY_FROM&quot;</span>, <span class="st">&quot;SALARY_TO&quot;</span>, <span class="st">&quot;ORIGINAL_PAY_PERIOD&quot;</span>,</span>
@@ -5038,7 +5038,7 @@ vertical-align: -.125em;
 <section id="remove-duplicate-postings" class="level3">
 <h3 class="anchored" data-anchor-id="remove-duplicate-postings">3.3 Remove Duplicate Postings</h3>
 <p>We deduplicate on the combination of job title + company + state + posting date. This removes re-posted or syndicated listings that represent the same position.</p>
-<div id="6c626b5b" class="cell" data-execution_count="10">
+<div id="aba2d5ee" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dup_subset <span class="op">=</span> [</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    c <span class="cf">for</span> c <span class="kw">in</span> [<span class="st">&quot;TITLE_RAW&quot;</span>, <span class="st">&quot;COMPANY_NAME&quot;</span>, <span class="st">&quot;STATE_NAME&quot;</span>, <span class="st">&quot;POSTED&quot;</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="kw">in</span> df.columns</span>
@@ -5059,7 +5059,7 @@ vertical-align: -.125em;
 <blockquote class="blockquote">
 <p><strong>Important:</strong> Missing salary values are left as <code>NaN</code> — we do <strong>not</strong> impute them with the median or mean. All downstream salary analyses should use <code>.dropna(subset=[&quot;SALARY_MID&quot;])</code> or filter to <code>df[df[&quot;SALARY_MID&quot;].notna()]</code> to work only with real data, preserving the true salary distribution.</p>
 </blockquote>
-<div id="6c3551e4" class="cell" data-execution_count="11">
+<div id="ef15da26" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY_FROM&quot;</span> <span class="kw">in</span> df.columns <span class="kw">and</span> <span class="st">&quot;SALARY_TO&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">&quot;SALARY_MID&quot;</span>] <span class="op">=</span> df[[<span class="st">&quot;SALARY_FROM&quot;</span>, <span class="st">&quot;SALARY_TO&quot;</span>]].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> df.columns:</span>
@@ -5085,7 +5085,7 @@ vertical-align: -.125em;
 <section id="fill-categorical-missing-values" class="level3">
 <h3 class="anchored" data-anchor-id="fill-categorical-missing-values">3.5 Fill Categorical Missing Values</h3>
 <p>Remaining <code>NaN</code> values in key categorical columns are replaced with the string <code>&quot;Unknown&quot;</code> so they appear explicitly in charts and model features rather than being silently excluded.</p>
-<div id="9400d17b" class="cell" data-execution_count="12">
+<div id="8a9b1913" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fill_unknown <span class="op">=</span> [</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NAICS_2022_6_NAME&quot;</span>,    <span class="co"># 6-digit industry (primary industry column)</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NAICS_2022_2_NAME&quot;</span>,    <span class="co"># 2-digit broad industry</span></span>
@@ -5115,7 +5115,7 @@ vertical-align: -.125em;
 <section id="column-reference-guide" class="level2">
 <h2 class="anchored" data-anchor-id="column-reference-guide">4. Column Reference Guide</h2>
 <p>A quick-reference map of the most useful columns for downstream analysis.</p>
-<div id="0f56803f" class="cell" data-execution_count="13">
+<div id="7d04aed1" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_col(df, candidates):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Return first matching column name (exact, then fuzzy).&quot;&quot;&quot;</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> candidates:</span>
@@ -5187,7 +5187,7 @@ vertical-align: -.125em;
 </section>
 <section id="cleaned-dataset-summary" class="level2">
 <h2 class="anchored" data-anchor-id="cleaned-dataset-summary">5. Cleaned Dataset Summary</h2>
-<div id="35e6f87b" class="cell" data-execution_count="14">
+<div id="bc80b324" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;=&quot;</span> <span class="op">*</span> <span class="dv">60</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;  CLEANED DATASET SUMMARY&quot;</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;=&quot;</span> <span class="op">*</span> <span class="dv">60</span>)</span>
@@ -5214,7 +5214,7 @@ vertical-align: -.125em;
 </section>
 <section id="appendix-full-column-list-cleaned" class="level2">
 <h2 class="anchored" data-anchor-id="appendix-full-column-list-cleaned">Appendix: Full Column List (Cleaned)</h2>
-<div id="441bebc2" class="cell" data-execution_count="15">
+<div id="622baaf9" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;All </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns in cleaned dataset:</span><span class="ch">\n</span><span class="ss">&quot;</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, c <span class="kw">in</span> <span class="bu">enumerate</span>(df.columns, <span class="dv">1</span>):</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    n   <span class="op">=</span> df[c].notna().<span class="bu">sum</span>()</span>
@@ -5668,7 +5668,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
 <div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;AD688 Group Project — Data Cleaning &amp; Preprocessing&quot;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Jingyuan Yang&quot;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;GROUP IV&quot;</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>

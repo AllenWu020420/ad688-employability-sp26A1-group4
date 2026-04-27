@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jingyuan Yang">
+<meta name="author" content="GROUP IV">
 <meta name="dcterms.date" content="2025-04-08">
 
 <title>Job Market Analysis 2024 - AD688 Final EDA — AI vs. Non-AI Careers &amp; BA/DS/ML Trends</title>
@@ -4797,7 +4797,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Jingyuan Yang </p>
+             <p>GROUP IV </p>
           </div>
   </div>
     
@@ -4865,7 +4865,7 @@ vertical-align: -.125em;
 </section>
 <section id="setup-data-loading" class="level2">
 <h2 class="anchored" data-anchor-id="setup-data-loading">0 · Setup &amp; Data Loading</h2>
-<div id="d26d8d1c" class="cell" data-execution_count="1">
+<div id="ca575e51" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess, sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pkg <span class="kw">in</span> [<span class="st">&quot;gdown&quot;</span>, <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;kaleido&quot;</span>]:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    subprocess.check_call([sys.executable, <span class="st">&quot;-m&quot;</span>, <span class="st">&quot;pip&quot;</span>, <span class="st">&quot;install&quot;</span>, <span class="st">&quot;-q&quot;</span>, pkg])</span>
@@ -4881,7 +4881,7 @@ vertical-align: -.125em;
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">&quot;display.max_columns&quot;</span>, <span class="dv">60</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Ready.&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e9d9d94e" class="cell" data-execution_count="2">
+<div id="c0ce3c60" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Download &amp; clean (self-contained) ────────────────────────────────────────</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>RAW <span class="op">=</span> <span class="st">&quot;lightcast_2024.csv&quot;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(RAW):</span>
@@ -4946,7 +4946,7 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="section-a-ai-tier-classification-topic-2.1">Section A · AI Tier Classification (Topic 2.1)</h2>
 <p><strong>Strategy:</strong> 3-tier label built from Lightcast’s own taxonomy + strict title keywords + strict ML tool skills.<br>
 Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code> → <code>Traditional Analytics / BI</code></p>
-<div id="6ecdb753" class="cell" data-execution_count="3">
+<div id="668f3a39" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── A1. Build 3-tier classifier ───────────────────────────────────────────────</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Keywords for LOT occupation label matching</span></span>
@@ -5029,7 +5029,7 @@ Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code>
 <span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&#39;HAS_AI_SKILL&#39;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Jobs with AI/ML tool skills: </span><span class="sc">{</span>df[<span class="st">&#39;HAS_AI_SKILL&#39;</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss"> (</span><span class="sc">{</span>df[<span class="st">&#39;HAS_AI_SKILL&#39;</span>]<span class="sc">.</span>mean()<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9305e576" class="cell" data-execution_count="4">
+<div id="ef6da963" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── A2. Tier distribution — pie + count bar ───────────────────────────────────</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>COLOR_MAP <span class="op">=</span> {</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;AI/ML Core&quot;</span>:                      <span class="st">&quot;#1565C0&quot;</span>,</span>
@@ -5049,7 +5049,7 @@ Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>fig.update_layout(legend_title_text<span class="op">=</span><span class="st">&quot;Tier&quot;</span>, height<span class="op">=</span><span class="dv">450</span>)</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="33a6d7df" class="cell" data-execution_count="5">
+<div id="e874fbbc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── A3. Salary comparison by tier ─────────────────────────────────────────────</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY_MID&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    df_s <span class="op">=</span> df[(df[<span class="st">&quot;SALARY_MID&quot;</span>] <span class="op">&gt;</span> <span class="dv">10_000</span>) <span class="op">&amp;</span> (df[<span class="st">&quot;SALARY_MID&quot;</span>] <span class="op">&lt;</span> <span class="dv">500_000</span>)].copy()</span>
@@ -5073,7 +5073,7 @@ Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;SALARY_MID not available.&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e2dd5538" class="cell" data-execution_count="6">
+<div id="24ea4b27" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── A4. Remote work arrangement by tier ───────────────────────────────────────</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;REMOTE_TYPE_NAME&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> df.groupby([<span class="st">&quot;AI_TIER&quot;</span>,<span class="st">&quot;REMOTE_TYPE_NAME&quot;</span>]).size().reset_index(name<span class="op">=</span><span class="st">&quot;Count&quot;</span>)</span>
@@ -5098,7 +5098,7 @@ Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(r.pivot_table(index<span class="op">=</span><span class="st">&quot;REMOTE_TYPE_NAME&quot;</span>, columns<span class="op">=</span><span class="st">&quot;AI_TIER&quot;</span>,</span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                        values<span class="op">=</span><span class="st">&quot;Share&quot;</span>, aggfunc<span class="op">=</span><span class="st">&quot;sum&quot;</span>).<span class="bu">round</span>(<span class="dv">1</span>).to_string())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2a5ffc27" class="cell" data-execution_count="7">
+<div id="5ea1a3f7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── A5. Education requirements by tier ────────────────────────────────────────</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>edu_col <span class="op">=</span> <span class="bu">next</span>((c <span class="cf">for</span> c <span class="kw">in</span> [<span class="st">&quot;MIN_EDULEVELS_NAME&quot;</span>,<span class="st">&quot;EDUCATION_LEVELS_NAME&quot;</span>] <span class="cf">if</span> c <span class="kw">in</span> df.columns), <span class="va">None</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> edu_col:</span>
@@ -5117,7 +5117,7 @@ Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Education column not found.&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6906d325" class="cell" data-execution_count="8">
+<div id="5e2247bc" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── A6. Top 15 job titles per tier ────────────────────────────────────────────</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;TITLE_RAW&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tier <span class="kw">in</span> [<span class="st">&quot;AI/ML Core&quot;</span>, <span class="st">&quot;Advanced Analytics / Engineering&quot;</span>, <span class="st">&quot;Traditional Analytics / BI&quot;</span>]:</span>
@@ -5132,7 +5132,7 @@ Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        fig.update_layout(yaxis<span class="op">=</span>{<span class="st">&quot;categoryorder&quot;</span>: <span class="st">&quot;total ascending&quot;</span>}, height<span class="op">=</span><span class="dv">480</span>)</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="bcc9af3f" class="cell" data-execution_count="9">
+<div id="505dc3dc" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── A7. Skill share heatmap: tier × top 25 skills ─────────────────────────────</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SKILLS_NAME&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> skill_counter(series):</span>
@@ -5169,7 +5169,7 @@ Tiers: <code>AI/ML Core</code> → <code>Advanced Analytics / Engineering</code>
 <h2 class="anchored" data-anchor-id="section-b-aiml-core-deep-dive">Section B · AI/ML Core Deep Dive</h2>
 <p>True AI/ML Core jobs represent only ~0.4% of data/tech postings.<br>
 This section examines <strong>where they are, whether they’re growing, and which industries host them.</strong></p>
-<div id="e8e8fc99" class="cell" data-execution_count="10">
+<div id="dfea95d8" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── B0. Subset: AI/ML Core jobs ───────────────────────────────────────────────</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ai_core <span class="op">=</span> df[df[<span class="st">&quot;AI_TIER&quot;</span>] <span class="op">==</span> <span class="st">&quot;AI/ML Core&quot;</span>].copy()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;AI/ML Core jobs: </span><span class="sc">{</span><span class="bu">len</span>(ai_core)<span class="sc">:,}</span><span class="ss">&quot;</span>)</span>
@@ -5183,7 +5183,7 @@ This section examines <strong>where they are, whether they’re growing, and whi
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Flagged by LOT taxonomy:    </span><span class="sc">{</span>lot_flag<span class="sc">:,}</span><span class="ss">&quot;</span>)</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Flagged by title keywords:  </span><span class="sc">{</span>title_flag<span class="sc">:,}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="caed2318" class="cell" data-execution_count="11">
+<div id="d4533f70" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── B1. AI/ML Core — monthly posting trend ────────────────────────────────────</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ai_monthly <span class="op">=</span> (ai_core[ai_core[<span class="st">&quot;POSTED_MONTH&quot;</span>] <span class="op">!=</span> <span class="st">&quot;NaT&quot;</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>              .groupby(<span class="st">&quot;POSTED_MONTH&quot;</span>).size().reset_index(name<span class="op">=</span><span class="st">&quot;Postings&quot;</span>))</span>
@@ -5214,7 +5214,7 @@ This section examines <strong>where they are, whether they’re growing, and whi
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(trend[[<span class="st">&quot;POSTED_MONTH&quot;</span>,<span class="st">&quot;Postings&quot;</span>,<span class="st">&quot;Total&quot;</span>,<span class="st">&quot;AI_Share_pct&quot;</span>]].to_string(index<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5b11d2d9" class="cell" data-execution_count="12">
+<div id="cd06fc93" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── B2. AI/ML Core — state distribution ───────────────────────────────────────</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;STATE_NAME&quot;</span> <span class="kw">in</span> ai_core.columns:</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    state_counts <span class="op">=</span> ai_core[<span class="st">&quot;STATE_NAME&quot;</span>].value_counts().head(<span class="dv">20</span>).reset_index()</span>
@@ -5246,7 +5246,7 @@ This section examines <strong>where they are, whether they’re growing, and whi
 <span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    fig2.update_layout(yaxis<span class="op">=</span>{<span class="st">&quot;categoryorder&quot;</span>: <span class="st">&quot;total ascending&quot;</span>}, height<span class="op">=</span><span class="dv">540</span>)</span>
 <span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    fig2.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="86ab8efe" class="cell" data-execution_count="13">
+<div id="e4444af5" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── B3. AI/ML Core — industry breakdown ───────────────────────────────────────</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;NAICS_2022_2_NAME&quot;</span> <span class="kw">in</span> ai_core.columns:</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    ind_ai <span class="op">=</span> ai_core[<span class="st">&quot;NAICS_2022_2_NAME&quot;</span>].value_counts().reset_index()</span>
@@ -5278,7 +5278,7 @@ This section examines <strong>where they are, whether they’re growing, and whi
 <span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    fig2.update_layout(yaxis<span class="op">=</span>{<span class="st">&quot;categoryorder&quot;</span>: <span class="st">&quot;total ascending&quot;</span>}, height<span class="op">=</span><span class="dv">500</span>)</span>
 <span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    fig2.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="57396e3b" class="cell" data-execution_count="14">
+<div id="abe62dbc" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── B4. AI/ML Core — top companies and top skills ─────────────────────────────</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;COMPANY_NAME&quot;</span> <span class="kw">in</span> ai_core.columns:</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    top_co <span class="op">=</span> ai_core[<span class="st">&quot;COMPANY_NAME&quot;</span>].value_counts().head(<span class="dv">15</span>).reset_index()</span>
@@ -5311,7 +5311,7 @@ This section examines <strong>where they are, whether they’re growing, and whi
 <span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(yaxis<span class="op">=</span>{<span class="st">&quot;categoryorder&quot;</span>: <span class="st">&quot;total ascending&quot;</span>}, height<span class="op">=</span><span class="dv">580</span>)</span>
 <span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="41fd03eb" class="cell" data-execution_count="15">
+<div id="49147576" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── B5. AI/ML Core — salary distribution and remote work ──────────────────────</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY_MID&quot;</span> <span class="kw">in</span> ai_core.columns:</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    ai_sal <span class="op">=</span> ai_core[(ai_core[<span class="st">&quot;SALARY_MID&quot;</span>] <span class="op">&gt;</span> <span class="dv">10_000</span>) <span class="op">&amp;</span> (ai_core[<span class="st">&quot;SALARY_MID&quot;</span>] <span class="op">&lt;</span> <span class="dv">500_000</span>)]</span>
@@ -5348,7 +5348,7 @@ This section examines <strong>where they are, whether they’re growing, and whi
 <h2 class="anchored" data-anchor-id="section-c-temporal-industry-trends-topic-2.5">Section C · Temporal &amp; Industry Trends (Topic 2.5)</h2>
 <p><strong>Focus:</strong> How is the data/analytics/tech job market evolving across May–September 2024?<br>
 Key dimensions: industry growth, occupation trends, emerging/declining titles, skill demand evolution.</p>
-<div id="4a8f0755" class="cell" data-execution_count="16">
+<div id="bbbbcab7" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C1. Overall posting volume over time ──────────────────────────────────────</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>monthly_vol <span class="op">=</span> (df[df[<span class="st">&quot;POSTED_MONTH&quot;</span>] <span class="op">!=</span> <span class="st">&quot;NaT&quot;</span>]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>               .groupby(<span class="st">&quot;POSTED_MONTH&quot;</span>).size().reset_index(name<span class="op">=</span><span class="st">&quot;Postings&quot;</span>))</span>
@@ -5365,7 +5365,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(monthly_vol.to_string(index<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d84c3107" class="cell" data-execution_count="17">
+<div id="bfef5866" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C2. Occupation category trends over time ───────────────────────────────────</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>occ_col <span class="op">=</span> <span class="bu">next</span>((c <span class="cf">for</span> c <span class="kw">in</span> [<span class="st">&quot;LOT_V6_OCCUPATION_NAME&quot;</span>,<span class="st">&quot;LOT_OCCUPATION_NAME&quot;</span>] <span class="cf">if</span> c <span class="kw">in</span> df.columns), <span class="va">None</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> occ_col:</span>
@@ -5392,7 +5392,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 <span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Occupation posting growth (</span><span class="sc">{</span>months[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>months[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">):&quot;</span>)</span>
 <span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(growth.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f&quot;</span><span class="sc">{</span>x<span class="sc">:+.1f}</span><span class="ss">%&quot;</span>).to_string())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="eaaaa01a" class="cell" data-execution_count="18">
+<div id="00c86fac" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C3. Industry posting trends over time (top 8) ─────────────────────────────</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;NAICS_2022_2_NAME&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    top_ind <span class="op">=</span> df[<span class="st">&quot;NAICS_2022_2_NAME&quot;</span>].value_counts().head(<span class="dv">8</span>).index</span>
@@ -5418,7 +5418,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 <span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Industry posting growth (</span><span class="sc">{</span>months[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>months[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">):&quot;</span>)</span>
 <span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(growth.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f&quot;</span><span class="sc">{</span>x<span class="sc">:+.1f}</span><span class="ss">%&quot;</span>).to_string())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e5c6c02e" class="cell" data-execution_count="19">
+<div id="c9aff331" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C4. Emerging vs. declining job titles (early vs. late 2024) ───────────────</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;TITLE_RAW&quot;</span> <span class="kw">in</span> df.columns <span class="kw">and</span> <span class="st">&quot;POSTED_DT&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    mid_date  <span class="op">=</span> df[<span class="st">&quot;POSTED_DT&quot;</span>].dropna().median()</span>
@@ -5459,7 +5459,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 <span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>    fig2.update_layout(yaxis<span class="op">=</span>{<span class="st">&quot;categoryorder&quot;</span>: <span class="st">&quot;total ascending&quot;</span>}, height<span class="op">=</span><span class="dv">560</span>)</span>
 <span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>    fig2.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fefbb364" class="cell" data-execution_count="20">
+<div id="36813dc9" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C5. Skill group demand evolution ──────────────────────────────────────────</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SKILLS_NAME&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    SKILL_GROUPS <span class="op">=</span> {</span>
@@ -5493,7 +5493,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 <span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(height<span class="op">=</span><span class="dv">460</span>)</span>
 <span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="663a7c7a" class="cell" data-execution_count="21">
+<div id="a8d9ec1f" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C6. AI/ML tool penetration by industry ────────────────────────────────────</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SKILLS_NAME&quot;</span> <span class="kw">in</span> df.columns <span class="kw">and</span> <span class="st">&quot;NAICS_2022_2_NAME&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    AI_TOOLS <span class="op">=</span> [<span class="st">&quot;tensorflow&quot;</span>,<span class="st">&quot;pytorch&quot;</span>,<span class="st">&quot;keras&quot;</span>,<span class="st">&quot;scikit-learn&quot;</span>,</span>
@@ -5523,7 +5523,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 <span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Industries with highest AI/ML tool requirement:&quot;</span>)</span>
 <span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ind_ai[[<span class="st">&quot;NAICS_2022_2_NAME&quot;</span>,<span class="st">&quot;AI_pct&quot;</span>,<span class="st">&quot;Count&quot;</span>]].head(<span class="dv">10</span>).to_string(index<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a1c249cc" class="cell" data-execution_count="22">
+<div id="e5f6d01b" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C7. Median salary trend over time ─────────────────────────────────────────</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY_MID&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    sal_trend <span class="op">=</span> (df[(df[<span class="st">&quot;SALARY_MID&quot;</span>] <span class="op">&gt;</span> <span class="dv">10_000</span>) <span class="op">&amp;</span> (df[<span class="st">&quot;SALARY_MID&quot;</span>] <span class="op">&lt;</span> <span class="dv">500_000</span>)</span>
@@ -5564,7 +5564,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 <span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(sal_trend.to_string(index<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f7371ea5" class="cell" data-execution_count="23">
+<div id="a8ddec5e" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── C8. Posting volume trend by AI tier (combined view) ───────────────────────</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;AI_TIER&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    tier_trend <span class="op">=</span> (df[df[<span class="st">&quot;POSTED_MONTH&quot;</span>] <span class="op">!=</span> <span class="st">&quot;NaT&quot;</span>]</span>
@@ -5585,7 +5585,7 @@ Key dimensions: industry growth, occupation trends, emerging/declining titles, s
 </section>
 <section id="section-d-key-findings-summary" class="level2">
 <h2 class="anchored" data-anchor-id="section-d-key-findings-summary">Section D · Key Findings Summary</h2>
-<div id="82c9dc9e" class="cell" data-execution_count="24">
+<div id="0ef56eb1" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── D. Print consolidated findings ────────────────────────────────────────────</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sep <span class="op">=</span> <span class="st">&quot;=&quot;</span> <span class="op">*</span> <span class="dv">70</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sep)</span>

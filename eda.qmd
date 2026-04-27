@@ -1,6 +1,6 @@
 ---
 title: "AD688 Final EDA — AI vs. Non-AI Careers & BA/DS/ML Trends"
-author: "Jingyuan Yang"
+author: "GROUP IV"
 date: "2025-04-08"
 format:
   html:

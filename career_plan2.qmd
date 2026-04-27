@@ -165,14 +165,7 @@ def combine_tiers(row):
 
 df["AI_TIER"] = df.apply(combine_tiers, axis=1)
 
-#print("AI_TIER distribution:")
-vc = df["AI_TIER"].value_counts()
-for tier, cnt in vc.items():
-    print(f"  {tier:<45s} {cnt:>7,}  ({cnt/len(df)*100:.1f}%)")
 
-#print(f"\nAI/ML Core jobs: {(df['AI_TIER']=='AI/ML Core').sum():,}")
-if 'HAS_AI_SKILL' in df.columns:
-    print(f"Jobs with AI/ML tool skills: {df['HAS_AI_SKILL'].sum():,} ({df['HAS_AI_SKILL'].mean()*100:.1f}%)")
 ```
 
 ***
