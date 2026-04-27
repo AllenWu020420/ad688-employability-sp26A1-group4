@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="GROUP IV">
-<meta name="dcterms.date" content="2026-04-22">
+<meta name="dcterms.date" content="2026-04-27">
 
 <title>Job Market Analysis 2024 - Business Analytics, Data Science, and Machine Learning Trends</title>
 <style>
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -94,16 +114,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./introduction.html"> 
-<span class="menu-text">Project Overview</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./data_cleaning.html"> 
 <span class="menu-text">Data Preparation</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./eda.html"> 
-<span class="menu-text">Exploratory Analysis</span></a>
+<span class="menu-text">EDA</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./skill_gap_analysis.html"> 
@@ -111,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./ml_methods.html"> 
-<span class="menu-text">Predictive Modeling</span></a>
+<span class="menu-text">ML Methods</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-career-strategy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -182,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 22, 2026</p>
+      <p class="date">April 27, 2026</p>
     </div>
   </div>
   
@@ -197,8 +213,8 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="./figures/website_image.png" class="img-fluid"></p>
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>Over the past decade, the need for professionals in data science, business analytics, and machine learning has expanded significantly <span class="citation" data-cites="manyika2011">(<a href="#ref-manyika2011" role="doc-biblioref"><strong>manyika2011?</strong></a>)</span>. As organizations increasingly depend on data to guide strategic and operational decisions, understanding current labor market dynamics has become critical for individuals planning careers in these fields.</p>
-<p>This project examines job market trends in 2024 using Lightcast job postings data <span class="citation" data-cites="lightcast2024">(<a href="#ref-lightcast2024" role="doc-biblioref"><strong>lightcast2024?</strong></a>)</span>. The analysis focuses on several key questions:</p>
+<p>Over the past decade, the need for professionals in data science, business analytics, and machine learning has expanded significantly <span class="citation" data-cites="manyika2011">(<a href="#ref-manyika2011" role="doc-biblioref">Manyika et al. 2011</a>)</span>. As organizations increasingly depend on data to guide strategic and operational decisions, understanding current labor market dynamics has become critical for individuals planning careers in these fields.</p>
+<p>This project examines job market trends in 2024 using Lightcast job postings data <span class="citation" data-cites="lightcast2024">(<a href="#ref-lightcast2024" role="doc-biblioref">Lightcast 2024</a>)</span>. The analysis focuses on several key questions:</p>
 <ul>
 <li>What are the most in-demand skills for data science, business analytics, and ML roles?</li>
 <li>Have job descriptions evolved in 2024 to require AI/ML expertise?</li>
@@ -209,23 +225,49 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="research-rationale" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="research-rationale"><span class="header-section-number">2</span> Research Rationale</h2>
-<p>The rapid advancement of artificial intelligence and automation technologies has reshaped workforce demands across industries. Roles in data science and analytics are now considered among the most valuable in the modern economy <span class="citation" data-cites="davenport2012">(<a href="#ref-davenport2012" role="doc-biblioref"><strong>davenport2012?</strong></a>)</span>. According to the U.S. Bureau of Labor Statistics <span class="citation" data-cites="bls2024">(<a href="#ref-bls2024" role="doc-biblioref"><strong>bls2024?</strong></a>)</span>, employment in data-related occupations is projected to grow at a rate exceeding the average for most professions.</p>
+<p>The rapid advancement of artificial intelligence and automation technologies has reshaped workforce demands across industries. Roles in data science and analytics are now considered among the most valuable in the modern economy <span class="citation" data-cites="davenport2012">(<a href="#ref-davenport2012" role="doc-biblioref">Davenport and Patil 2012</a>)</span>. According to the U.S. Bureau of Labor Statistics <span class="citation" data-cites="bls2024">(<a href="#ref-bls2024" role="doc-biblioref">U.S. Bureau of Labor Statistics 2024</a>)</span>, employment in data-related occupations is projected to grow at a rate exceeding the average for most professions.</p>
 <p>Given these trends, it is essential for job seekers to understand which competencies are most valued, where opportunities are concentrated, and how compensation varies across different contexts. This study adopts the perspective of an individual entering the data field in 2024 and uses real-world job posting data to identify patterns that can inform career decisions. Literature Review</p>
 <p>This analysis takes the perspective of a job seeker entering the data science field in 2024, examining real job posting data to identify trends and opportunities.</p>
 </section>
 <section id="literature-review" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="literature-review"><span class="header-section-number">3</span> Literature Review</h2>
-<p>Recent studies and industry reports emphasize the evolving requirements of data-related careers. Findings from sources such as the Kaggle Developer Survey indicate that programming languages like Python and SQL continue to dominate job requirements, alongside machine learning tools and frameworks <span class="citation" data-cites="kaggle2023 python2024">(<a href="#ref-kaggle2023" role="doc-biblioref"><strong>kaggle2023?</strong></a>; <a href="#ref-python2024" role="doc-biblioref"><strong>python2024?</strong></a>)</span>. In addition, demand for cloud computing skills, including platforms such as AWS, Microsoft Azure, and Google Cloud, has grown steadily.</p>
-<p>Research also highlights regional differences in compensation, with major technology hubs such as San Francisco, Seattle, and New York typically offering higher salaries <span class="citation" data-cites="linkedin2024">(<a href="#ref-linkedin2024" role="doc-biblioref"><strong>linkedin2024?</strong></a>)</span>. However, the increasing adoption of remote work has begun to reduce geographic barriers, allowing broader access to opportunities.</p>
-<p>Furthermore, business analytics roles are increasingly interdisciplinary, requiring not only technical proficiency but also the ability to interpret data and communicate insights effectively <span class="citation" data-cites="provost2013">(<a href="#ref-provost2013" role="doc-biblioref"><strong>provost2013?</strong></a>)</span>. Employers now prioritize candidates who can connect analytical results to real-world business outcomes.</p>
+<p>Recent studies and industry reports emphasize the evolving requirements of data-related careers. Findings from sources such as the Kaggle Developer Survey indicate that programming languages like Python and SQL continue to dominate job requirements, alongside machine learning tools and frameworks <span class="citation" data-cites="kaggle2023 python2024">(<a href="#ref-kaggle2023" role="doc-biblioref">Kaggle 2023</a>; <a href="#ref-python2024" role="doc-biblioref">Python Software Foundation and JetBrains 2024</a>)</span>. In addition, demand for cloud computing skills, including platforms such as AWS, Microsoft Azure, and Google Cloud, has grown steadily.</p>
+<p>Research also highlights regional differences in compensation, with major technology hubs such as San Francisco, Seattle, and New York typically offering higher salaries <span class="citation" data-cites="linkedin2024">(<a href="#ref-linkedin2024" role="doc-biblioref">LinkedIn Economic Graph 2024</a>)</span>. However, the increasing adoption of remote work has begun to reduce geographic barriers, allowing broader access to opportunities.</p>
+<p>Furthermore, business analytics roles are increasingly interdisciplinary, requiring not only technical proficiency but also the ability to interpret data and communicate insights effectively <span class="citation" data-cites="provost2013">(<a href="#ref-provost2013" role="doc-biblioref">Provost and Fawcett 2013</a>)</span>. Employers now prioritize candidates who can connect analytical results to real-world business outcomes.</p>
 </section>
 <section id="references" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="references"><span class="header-section-number">4</span> References</h2>
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">4 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-davenport2012" class="csl-entry" role="listitem">
+Davenport, Thomas H, and DJ Patil. 2012. <span>“Data Scientist: The Sexiest Job of the 21st Century.”</span> <em>Harvard Business Review</em> 90 (10): 70–76.
+</div>
+<div id="ref-kaggle2023" class="csl-entry" role="listitem">
+Kaggle. 2023. <span>“State of Data Science and Machine Learning Survey 2023.”</span> <a href="https://www.kaggle.com/competitions/kaggle-survey-2023" class="uri">https://www.kaggle.com/competitions/kaggle-survey-2023</a>.
+</div>
+<div id="ref-lightcast2024" class="csl-entry" role="listitem">
+Lightcast. 2024. <span>“Labor Market Analytics: Job Postings Data 2024.”</span> <a href="https://lightcast.io" class="uri">https://lightcast.io</a>.
+</div>
+<div id="ref-linkedin2024" class="csl-entry" role="listitem">
+LinkedIn Economic Graph. 2024. <span>“2024 Work Trends Report.”</span> <a href="https://economicgraph.linkedin.com/research/future-of-work-report-ai" class="uri">https://economicgraph.linkedin.com/research/future-of-work-report-ai</a>.
+</div>
+<div id="ref-manyika2011" class="csl-entry" role="listitem">
+Manyika, James, Michael Chui, Brad Brown, Jacques Bughin, Richard Dobbs, Charles Roxburgh, and Angela H Byers. 2011. <em>Big Data: The Next Frontier for Innovation, Competition, and Productivity</em>. Washington, DC: McKinsey Global Institute.
+</div>
+<div id="ref-provost2013" class="csl-entry" role="listitem">
+Provost, Foster, and Tom Fawcett. 2013. <em>Data Science for Business: What You Need to Know about Data Mining and Data-Analytic Thinking</em>. Sebastopol, CA: O’Reilly Media.
+</div>
+<div id="ref-python2024" class="csl-entry" role="listitem">
+Python Software Foundation and JetBrains. 2024. <span>“Python Developer Survey 2024.”</span> <a href="https://www.jetbrains.com/lp/python-developers-survey-2024/" class="uri">https://www.jetbrains.com/lp/python-developers-survey-2024/</a>.
+</div>
+<div id="ref-bls2024" class="csl-entry" role="listitem">
+U.S. Bureau of Labor Statistics. 2024. <span>“Occupational Outlook Handbook: Data Scientists.”</span> <a href="https://www.bls.gov/ooh/math/data-scientists.htm" class="uri">https://www.bls.gov/ooh/math/data-scientists.htm</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

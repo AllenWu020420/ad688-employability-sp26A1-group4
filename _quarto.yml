@@ -3,7 +3,6 @@ project:
   output-dir: docs
   render:
     - index.qmd
-    - introduction.qmd
     - data_cleaning.qmd
     - eda.qmd
     - skill_gap_analysis.qmd
@@ -18,16 +17,14 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: introduction.qmd
-        text: "Project Overview"
       - href: data_cleaning.qmd
         text: "Data Preparation"
       - href: eda.qmd
-        text: "Exploratory Analysis"
+        text: "EDA"
       - href: skill_gap_analysis.qmd
         text: "Skill Gap Analysis"
       - href: ml_methods.qmd
-        text: "Predictive Modeling"
+        text: "ML Methods"
       - text: "Career Strategy"
         menu:
           - text: "AI Tier Classification"

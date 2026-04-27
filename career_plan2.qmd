@@ -26,7 +26,7 @@ from collections import Counter
 import warnings, gdown, os
 warnings.filterwarnings("ignore")
 pd.set_option("display.max_columns", 60)
-print("Ready.")
+#print("Ready.")
 ```
 
 ```{python}
@@ -37,7 +37,7 @@ if not os.path.exists(RAW):
                    RAW, quiet=False)
 
 df_raw = pd.read_csv(RAW, low_memory=False)
-print(f"Raw: {df_raw.shape}")
+#print(f"Raw: {df_raw.shape}")
 
 df = df_raw.copy()
 
@@ -85,15 +85,11 @@ df["POSTED_DT"]    = pd.to_datetime(df["POSTED"], errors="coerce")
 df["POSTED_MONTH"] = df["POSTED_DT"].dt.to_period("M").astype(str)
 df["POSTED_WEEK"]  = df["POSTED_DT"].dt.to_period("W").astype(str)
 
-print(f"Cleaned: {df.shape}")
-print(f"Date range: {df['POSTED_DT'].min().date()} → {df['POSTED_DT'].max().date()}")
-print(f"Columns kept: {df.shape[1]}")
+#print(f"Cleaned: {df.shape}")
+#print(f"Date range: {df['POSTED_DT'].min().date()} → {df['POSTED_DT'].max().date()}")
+#print(f"Columns kept: {df.shape[1]}")
 ```
 
-***
-## Section A - AI Tier Classification (Topic 2.1)
-##**Strategy:** 3-tier label built from Lightcast's own taxonomy + strict title keywords + strict ML tool skills.  
-## Tiers: `AI/ML Core` → `Advanced Analytics / Engineering` → `Traditional Analytics / BI`
 
 ```{python}
 # ── A1. Build 3-tier classifier ───────────────────────────────────────────────
@@ -169,12 +165,12 @@ def combine_tiers(row):
 
 df["AI_TIER"] = df.apply(combine_tiers, axis=1)
 
-print("AI_TIER distribution:")
+#print("AI_TIER distribution:")
 vc = df["AI_TIER"].value_counts()
 for tier, cnt in vc.items():
     print(f"  {tier:<45s} {cnt:>7,}  ({cnt/len(df)*100:.1f}%)")
 
-print(f"\nAI/ML Core jobs: {(df['AI_TIER']=='AI/ML Core').sum():,}")
+#print(f"\nAI/ML Core jobs: {(df['AI_TIER']=='AI/ML Core').sum():,}")
 if 'HAS_AI_SKILL' in df.columns:
     print(f"Jobs with AI/ML tool skills: {df['HAS_AI_SKILL'].sum():,} ({df['HAS_AI_SKILL'].mean()*100:.1f}%)")
 ```

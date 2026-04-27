@@ -129,16 +129,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./introduction.html"> 
-<span class="menu-text">Project Overview</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./data_cleaning.html"> 
 <span class="menu-text">Data Preparation</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./eda.html"> 
-<span class="menu-text">Exploratory Analysis</span></a>
+<span class="menu-text">EDA</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./skill_gap_analysis.html"> 
@@ -146,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./ml_methods.html" aria-current="page"> 
-<span class="menu-text">Predictive Modeling</span></a>
+<span class="menu-text">ML Methods</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-career-strategy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -230,7 +226,7 @@ We use one unsupervised learning model and two supervised learning models:</p>
 <li>Load Libraries and Data</li>
 </ol>
 <p>We first import the necessary libraries and load the cleaned dataset.</p>
-<div id="41098e54" class="cell" data-execution_count="1">
+<div id="7c2c3740" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gdown</span>
@@ -426,7 +422,7 @@ We use one unsupervised learning model and two supervised learning models:</p>
 <ol start="3" type="1">
 <li>Descriptive Statistics Before building models, we examine the summary statistics of the key numerical variables used in this section.</li>
 </ol>
-<div id="1e0ad33e" class="cell" data-execution_count="2">
+<div id="250e4e62" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">"SALARY"</span>, <span class="st">"SALARY_MID"</span>, <span class="st">"MIN_YEARS_EXPERIENCE"</span>]].describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              SALARY     SALARY_MID  MIN_YEARS_EXPERIENCE
@@ -444,7 +440,7 @@ max    500000.000000  800000.000000             15.000000</code></pre>
 <ol start="4" type="1">
 <li>KMeans Clustering We apply KMeans clustering using Salary and Minimum Years of Experience to segment job postings into three groups.</li>
 </ol>
-<div id="a442a190" class="cell" data-execution_count="3">
+<div id="b82a0c8d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cluster_df <span class="op">=</span> df[[<span class="st">"SALARY"</span>, <span class="st">"MIN_YEARS_EXPERIENCE"</span>]].dropna().copy()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>X_cluster <span class="op">=</span> cluster_df[[<span class="st">"SALARY"</span>, <span class="st">"MIN_YEARS_EXPERIENCE"</span>]]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -507,7 +503,7 @@ max    500000.000000  800000.000000             15.000000</code></pre>
 </div>
 </div>
 <p>The clustering output groups jobs into three segments based on salary and experience. This means that the job market is not uniform. Instead, it contains different layers of opportunities with different levels of pay and required qualifications.</p>
-<div id="dccd135d" class="cell" data-execution_count="4">
+<div id="efd9c657" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    cluster_df[<span class="st">"MIN_YEARS_EXPERIENCE"</span>],</span>
@@ -531,7 +527,7 @@ max    500000.000000  800000.000000             15.000000</code></pre>
 <ol start="5" type="1">
 <li>Linear Regression Next, we use Linear Regression to examine whether minimum years of experience can help explain salary midpoint.</li>
 </ol>
-<div id="cc5a3b2e" class="cell" data-execution_count="5">
+<div id="4903d235" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>reg_df <span class="op">=</span> df[[<span class="st">"MIN_YEARS_EXPERIENCE"</span>, <span class="st">"SALARY_MID"</span>]].dropna().copy()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> reg_df[[<span class="st">"MIN_YEARS_EXPERIENCE"</span>]]</span>
@@ -563,7 +559,7 @@ Coefficient: 6942.344143590794</code></pre>
 </div>
 </div>
 <p>The regression results show a positive coefficient, indicating that jobs requiring more experience tend to have higher salary midpoints. However, the R² value is relatively low, which means that experience alone explains only part of the salary variation. Other factors such as job title, location, industry, and technical skills likely also influence salary.</p>
-<div id="e5381318" class="cell" data-execution_count="6">
+<div id="bc72f95b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test, y_test)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.plot(X_test, y_pred)</span>
@@ -584,7 +580,7 @@ Coefficient: 6942.344143590794</code></pre>
 <ol start="6" type="1">
 <li>Logistic Regression: Remote Job Classification Finally, we build a Logistic Regression model to classify whether a job is remote based on: Minimum Years of Experience Salary Mid</li>
 </ol>
-<div id="cd6e9604" class="cell" data-execution_count="7">
+<div id="4b78449f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"REMOTE_TYPE_NAME"</span>].dropna().value_counts().head(<span class="dv">10</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clf_df <span class="op">=</span> df[[<span class="st">"MIN_YEARS_EXPERIENCE"</span>, <span class="st">"SALARY_MID"</span>, <span class="st">"REMOTE_TYPE_NAME"</span>]].dropna().copy()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
