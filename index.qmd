@@ -9,9 +9,11 @@ format:
     toc: true
     number-sections: true
 ---
-![](./figures/AI_vs_Human.png)
+
 
 ## AI vs. Non-AI Careers
+
+![](./figures/AI_vs_Human.png)
 
 ### Introduction
 
@@ -40,9 +42,11 @@ high six-figure salaries [@mit2024], while AI Ethicist, AI Product Manager, and 
 late 2020s [@atera2026]. National University (2026) reported that 14% of workers already report AI-related displacement, while entry-level software engineering job postings grew 47% between October 2023 and November 2024 [@nationaluniversity2026], illustrating AI's dual nature as both disruptor and creator.
 
 
-![](./figures/website_image.png)
+
 
 ## Business Analytics, Data Science, and Machine Learning Trends
+
+![](./figures/website_image.png)
 
 ### Introduction
 
