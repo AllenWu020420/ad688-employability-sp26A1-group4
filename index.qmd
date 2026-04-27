@@ -39,8 +39,6 @@ New job titles are proliferating rapidly. The Prompt Engineer role emerged in 20
 high six-figure salaries [@mit2024], while AI Ethicist, AI Product Manager, and Machine Learning Operations Specialist roles are now mainstream, with projected growth of 29–45% through the
 late 2020s [@atera2026]. National University (2026) reported that 14% of workers already report AI-related displacement, while entry-level software engineering job postings grew 47% between October 2023 and November 2024 [@nationaluniversity2026], illustrating AI's dual nature as both disruptor and creator.
 
-::: {#refs}
-:::
 
 ![](./figures/website_image.png)
 
@@ -65,5 +63,4 @@ The AnalytixLabs Data Science Skills Survey (2024), drawing on 100+ Fortune 500 
 
 The WEF Future of Jobs Report 2023 projected demand for AI and machine learning specialists to increase 40% by 2027 [@wef2023]. Gartner projected that over 50% of data science tasks would be automated by 2025 through AutoML tools [@gartner2024], but research consistently finds these tools augment rather than replace skilled professionals. Coursera (2025) noted that business analyst demand is projected to generate approximately 98,100 job openings annually through 2034, with median wages ranging from $78,400 to over $101,000 [@coursera2025].
 
-::: {#refs}
-:::
+## References
