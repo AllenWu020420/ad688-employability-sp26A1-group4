@@ -9,6 +9,8 @@ format:
 execute:
   echo: false
   eval: true
+  warning: false
+  message: false
 ---
 
 # Machine Learning
@@ -49,7 +51,7 @@ url = "https://drive.google.com/uc?id=10I1L-q4C0vHT4NceidrJIjN1QkMTzFOz"
 output = "cleaned_data.csv"
 
 if not os.path.exists(output):
-    gdown.download(url, output, quiet=False)
+    gdown.download(url, output, quiet=True)
 
 df = pd.read_csv(output)
 
@@ -83,61 +85,87 @@ Approximately 34.5% of job postings are related to AI, Machine Learning, Data Sc
 ```{python}
 # KMeans Clustering
 
-cluster_df = df[[
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.cluster import KMeans
+
+features = df[[
     "SALARY_MID",
     "MIN_YEARS_EXPERIENCE",
-    "IS_AI_ML_ROLE"
-]].dropna().copy()
+    "IS_AI_ML_ROLE",
+    "REMOTE_TYPE_NAME",
+    "NAICS_2022_6_NAME"
+]].dropna()
 
-X_cluster = cluster_df[[
-    "SALARY_MID",
-    "MIN_YEARS_EXPERIENCE",
-    "IS_AI_ML_ROLE"
-]]
+numeric_features = ["SALARY_MID", "MIN_YEARS_EXPERIENCE"]
+categorical_features = ["REMOTE_TYPE_NAME", "NAICS_2022_6_NAME"]
 
-# Standardize
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X_cluster)
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("num", StandardScaler(), numeric_features),
+        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features)
+    ]
+)
+
+# 处理数据
+X_processed = preprocessor.fit_transform(features)
 
 # KMeans
-kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
-cluster_df["cluster"] = kmeans.fit_predict(X_scaled)
-
-print(cluster_df["cluster"].value_counts())
+kmeans = KMeans(n_clusters=3, random_state=42)
+features["cluster"] = kmeans.fit_predict(X_processed)
 
 import plotly.express as px
-import plotly.io as pio
 
 fig = px.scatter(
-    cluster_df,
+    features,
     x="MIN_YEARS_EXPERIENCE",
     y="SALARY_MID",
     color="cluster",
-    title="KMeans Clustering: Job Segments",
-    labels={
-        "MIN_YEARS_EXPERIENCE": "Experience",
-        "SALARY_MID": "Salary"
-    }
+    title="KMeans Clustering with Enhanced Features"
 )
+
+fig.show()
+
+import plotly.express as px
+
+fig = px.histogram(
+    features,
+    x="cluster",
+    color="REMOTE_TYPE_NAME",
+    barmode="group",
+    title="Distribution of Remote Work Types Across Clusters"
+)
+
+fig.update_layout(template="plotly_white")
+
+fig.show()
+
+fig = px.histogram(
+    features,
+    x="cluster",
+    color="IS_AI_ML_ROLE",
+    barmode="group",
+    title="AI Job Distribution Across Clusters"
+)
+
+fig.update_layout(template="plotly_white")
 
 fig.show()
 ```
 
-KMeans clustering was applied to segment job postings based on salary, experience, and AI/ML classification.
+KMeans clustering was applied using multiple features including salary, years of experience, AI role classification, and remote work type to segment job postings into distinct groups.
 
-🔹 Key findings
-The results show three distinct clusters of jobs.
-One cluster represents lower-salary, lower-experience roles, likely entry-level positions.
-Another cluster represents mid-level roles with moderate salary and experience.
-The third cluster includes higher-salary positions with greater experience requirements, which are more likely to include AI/ML-related roles.
+The results reveal three meaningful clusters in the job market.
+Cluster 0 represents lower-salary, lower-experience roles, which are mostly entry-level positions with a moderate presence of AI jobs and a relatively higher proportion of remote opportunities.
 
-🔹 Interpretation
-This indicates that the job market is segmented into clear tiers.
-As experience increases, jobs tend to move into higher-paying clusters.
-AI and data-related roles are more concentrated in higher-paying clusters.
+Cluster 1 contains mid-level roles with moderate salary and experience. This cluster shows the highest concentration of AI-related jobs, indicating that AI roles are more common in mid-tier positions rather than purely senior roles.
 
-🔹 Job seeker insight
-Job seekers should view entry-level roles as stepping stones and focus on building skills to transition into higher-paying clusters, especially in AI and data-related fields.
+Cluster 2 represents higher-salary, higher-experience positions. These roles are less likely to be remote and are dominated by non-AI jobs, suggesting that traditional senior roles still occupy a large portion of high-paying jobs.
+
+Overall, the clustering results indicate that job segmentation is influenced not only by salary and experience, but also by whether a role is AI-related and its remote work characteristics. AI roles tend to concentrate in specific clusters rather than being evenly distributed across all job types.
+
+This suggests that the job market is structured into distinct tiers, where AI-related opportunities and remote work patterns vary significantly across segments.
 
 
 ```{python}
