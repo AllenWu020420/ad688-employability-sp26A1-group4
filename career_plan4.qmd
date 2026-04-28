@@ -352,8 +352,8 @@ tfidf_scores = pd.DataFrame({
 
 tfidf_scores
 ```
-## 2. TF-IDF Keyword Table
-## The TF-IDF results are similar to the word frequency results, but they give more weight to words that are important across the text rather than just repeated often. Analyst and data still have the highest scores, which confirms that analytics-related roles dominate the dataset. The high scores for SAP, consultant, architect, and enterprise show that specialized business technology skills are important in this job market. Compared with simple word counts, TF-IDF gives a better sense of which terms are more meaningful for understanding job descriptions.
+##2. TF-IDF Keyword Table
+##The TF-IDF results are similar to the word frequency results, but they give more weight to words that are important across the text rather than just repeated often. Analyst and data still have the highest scores, which confirms that analytics-related roles dominate the dataset. The high scores for SAP, consultant, architect, and enterprise show that specialized business technology skills are important in this job market. Compared with simple word counts, TF-IDF gives a better sense of which terms are more meaningful for understanding job descriptions.
 ```{python}
 skills = ["python","sql","excel","machine learning","tableau","power bi","communication"]
 
@@ -384,4 +384,4 @@ df_salary["has_python"] = df_salary["TITLE_RAW"].astype(str).str.contains("pytho
 df_salary.groupby("has_python")["SALARY_MID"].mean().reset_index()
 ```
 ##4. Python Salary Comparison
-##The salary comparison shows that jobs mentioning Python have a higher average salary than jobs that do not mention Python. The average salary for Python-related postings is about $129,903, compared with about $115,040 for non-Python postings. This suggests that Python may be associated with more technical or higher-value analytics roles. However, this result should be interpreted carefully because it shows correlation, not causation. Python may appear more often in advanced analytics or technical roles that already tend to pay more.
+##The salary comparison shows that jobs mentioning Python have a higher average salary than jobs that do not mention Python. The average salary for Python-related postings is about $114379.306499, compared with about $106080.000000 for non-Python postings. This suggests that Python may be associated with more technical or higher-value analytics roles. However, this result should be interpreted carefully because it shows correlation, not causation. Python may appear more often in advanced analytics or technical roles that already tend to pay more.
