@@ -83,24 +83,38 @@ print(df["IS_AI_ML_ROLE"].value_counts(normalize=True))
 Approximately 34.5% of job postings are related to AI, Machine Learning, Data Science, or Analytics, while 65.5% are not.
 
 ```{python}
-# KMeans Clustering
+# KMeans Clustering with Enhanced Features
 
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.cluster import KMeans
+import pandas as pd
+import plotly.express as px
 
-features = df[[
+# Select clustering features
+cluster_features = [
     "SALARY_MID",
     "MIN_YEARS_EXPERIENCE",
     "IS_AI_ML_ROLE",
     "REMOTE_TYPE_NAME",
     "NAICS_2022_6_NAME"
-]].dropna()
+]
 
-numeric_features = ["SALARY_MID", "MIN_YEARS_EXPERIENCE"]
-categorical_features = ["REMOTE_TYPE_NAME", "NAICS_2022_6_NAME"]
+features = df[cluster_features].dropna().copy()
 
+# Define numeric and categorical features
+numeric_features = [
+    "SALARY_MID",
+    "MIN_YEARS_EXPERIENCE",
+    "IS_AI_ML_ROLE"
+]
+
+categorical_features = [
+    "REMOTE_TYPE_NAME",
+    "NAICS_2022_6_NAME"
+]
+
+# Preprocess features
 preprocessor = ColumnTransformer(
     transformers=[
         ("num", StandardScaler(), numeric_features),
@@ -108,65 +122,87 @@ preprocessor = ColumnTransformer(
     ]
 )
 
-# 处理数据
 X_processed = preprocessor.fit_transform(features)
 
-# KMeans
-kmeans = KMeans(n_clusters=3, random_state=42)
+# Run KMeans
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
 features["cluster"] = kmeans.fit_predict(X_processed)
 
-import plotly.express as px
+print(features["cluster"].value_counts())
+
+# KMeans Scatter Plot
 
 fig = px.scatter(
     features,
     x="MIN_YEARS_EXPERIENCE",
     y="SALARY_MID",
-    color="cluster",
-    title="KMeans Clustering with Enhanced Features"
-)
-
-fig.show()
-
-import plotly.express as px
-
-fig = px.histogram(
-    features,
-    x="cluster",
-    color="REMOTE_TYPE_NAME",
-    barmode="group",
-    title="Distribution of Remote Work Types Across Clusters"
+    color=features["cluster"].astype(str),
+    title="KMeans Clustering with Enhanced Features",
+    labels={
+        "MIN_YEARS_EXPERIENCE": "Minimum Years of Experience",
+        "SALARY_MID": "Salary Midpoint",
+        "color": "Cluster"
+    }
 )
 
 fig.update_layout(template="plotly_white")
 
 fig.show()
 
-fig = px.histogram(
-    features,
-    x="cluster",
-    color="IS_AI_ML_ROLE",
-    barmode="group",
-    title="AI Job Distribution Across Clusters"
+# KMeans Cluster Centers Heatmap
+
+# Get feature names after preprocessing
+encoded_cat_features = preprocessor.named_transformers_["cat"].get_feature_names_out(categorical_features)
+
+feature_names = numeric_features + list(encoded_cat_features)
+
+centers_df = pd.DataFrame(
+    kmeans.cluster_centers_,
+    columns=feature_names
 )
 
-fig.update_layout(template="plotly_white")
+centers_df.index = [f"Cluster {i}" for i in range(kmeans.n_clusters)]
+
+# Keep only key interpretable features
+important_features = [
+    "SALARY_MID",
+    "MIN_YEARS_EXPERIENCE",
+    "IS_AI_ML_ROLE",
+    "REMOTE_TYPE_NAME_Remote",
+    "REMOTE_TYPE_NAME_Hybrid Remote",
+    "REMOTE_TYPE_NAME_Not Remote"
+]
+
+available_features = [f for f in important_features if f in centers_df.columns]
+
+centers_filtered = centers_df[available_features]
+
+fig = px.imshow(
+    centers_filtered,
+    text_auto=".2f",
+    aspect="auto",
+    title="KMeans Cluster Centers Heatmap: Key Features",
+    labels=dict(x="Features", y="Clusters", color="Standardized Value")
+)
+
+fig.update_layout(
+    template="plotly_white",
+    xaxis_tickangle=30
+)
 
 fig.show()
 ```
+The KMeans clustering results reveal three distinct job market segments based on salary, experience, AI classification, and remote work features.
 
-KMeans clustering was applied using multiple features including salary, years of experience, AI role classification, and remote work type to segment job postings into distinct groups.
+Cluster 0 represents lower-salary and lower-experience roles, with the lowest presence of AI-related jobs. However, this cluster shows a slightly higher proportion of remote work opportunities, indicating that entry-level positions are more flexible but less technical.
 
-The results reveal three meaningful clusters in the job market.
-Cluster 0 represents lower-salary, lower-experience roles, which are mostly entry-level positions with a moderate presence of AI jobs and a relatively higher proportion of remote opportunities.
+Cluster 1 corresponds to higher-salary and higher-experience roles, but with a lower concentration of AI-related jobs. This suggests that many senior positions are still dominated by traditional, non-AI roles, even at higher salary levels.
 
-Cluster 1 contains mid-level roles with moderate salary and experience. This cluster shows the highest concentration of AI-related jobs, indicating that AI roles are more common in mid-tier positions rather than purely senior roles.
+Cluster 2 is characterized by the highest concentration of AI/ML roles, despite having only moderate salary and experience levels. This indicates that AI-related jobs are more commonly found in mid-level positions rather than strictly in senior roles.
 
-Cluster 2 represents higher-salary, higher-experience positions. These roles are less likely to be remote and are dominated by non-AI jobs, suggesting that traditional senior roles still occupy a large portion of high-paying jobs.
+Across all clusters, remote work features show minimal variation, suggesting that remote work is relatively evenly distributed and does not strongly influence job segmentation. Instead, salary, experience, and AI classification are the primary drivers of clustering.
 
-Overall, the clustering results indicate that job segmentation is influenced not only by salary and experience, but also by whether a role is AI-related and its remote work characteristics. AI roles tend to concentrate in specific clusters rather than being evenly distributed across all job types.
-
-This suggests that the job market is structured into distinct tiers, where AI-related opportunities and remote work patterns vary significantly across segments.
-
+Overall, these results suggest that the job market is segmented into distinct tiers, where AI-related opportunities are concentrated in specific clusters rather than uniformly distributed. This highlights the importance for job seekers to target the right segment based on their experience level and technical skill set.
 
 ```{python}
 # Select features for classification
