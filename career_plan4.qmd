@@ -339,6 +339,8 @@ word_counts = pd.DataFrame({
 
 word_counts
 ```
+##1. Word Frequency Table
+##This table shows the most frequently used words in the job posting text. The most common words are analyst, data, consultant, SAP, architect, and senior. This suggests that the dataset is heavily focused on business analytics, enterprise systems, consulting, and technical business roles. Words such as SAP, Oracle, ERP, and enterprise also indicate that many employers are looking for candidates with enterprise software and business systems knowledge, not only general data skills.
 ```{python}
 tfidf = TfidfVectorizer(stop_words='english', max_features=20)
 X_tfidf = tfidf.fit_transform(text_data)
@@ -350,6 +352,8 @@ tfidf_scores = pd.DataFrame({
 
 tfidf_scores
 ```
+## 2. TF-IDF Keyword Table
+## The TF-IDF results are similar to the word frequency results, but they give more weight to words that are important across the text rather than just repeated often. Analyst and data still have the highest scores, which confirms that analytics-related roles dominate the dataset. The high scores for SAP, consultant, architect, and enterprise show that specialized business technology skills are important in this job market. Compared with simple word counts, TF-IDF gives a better sense of which terms are more meaningful for understanding job descriptions.
 ```{python}
 skills = ["python","sql","excel","machine learning","tableau","power bi","communication"]
 
@@ -362,6 +366,8 @@ skill_df = pd.DataFrame({
 
 skill_df
 ```
+##3. Skill Keyword Count and Bar Chart
+##The skill keyword chart shows that SQL appears most often, followed by communication and Excel. This means employers are not only looking for technical ability, but also business communication and reporting skills. Python, Power BI, Tableau, and machine learning appear less frequently in this result, which may suggest that many postings are more focused on analytics, database querying, and business reporting than advanced machine learning. For students, SQL and communication should be treated as core employability skills.
 ```{python}
 import matplotlib.pyplot as plt
 
@@ -377,3 +383,5 @@ df_salary = df.dropna(subset=["SALARY_MID"])
 df_salary["has_python"] = df_salary["TITLE_RAW"].astype(str).str.contains("python", na=False)
 df_salary.groupby("has_python")["SALARY_MID"].mean().reset_index()
 ```
+##4. Python Salary Comparison
+##The salary comparison shows that jobs mentioning Python have a higher average salary than jobs that do not mention Python. The average salary for Python-related postings is about $129,903, compared with about $115,040 for non-Python postings. This suggests that Python may be associated with more technical or higher-value analytics roles. However, this result should be interpreted carefully because it shows correlation, not causation. Python may appear more often in advanced analytics or technical roles that already tend to pay more.
