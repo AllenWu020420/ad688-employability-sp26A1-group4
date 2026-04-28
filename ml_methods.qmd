@@ -13,41 +13,37 @@ execute:
 
 # Machine Learning
 
-1. Purpose
+## Purpose
 
-This section applies machine learning methods to analyze patterns in the 2024 job market dataset.  
-We use one unsupervised learning model and two supervised learning models:
+This section applies machine learning methods to analyze AI, Machine Learning, Data Science, and Business Analytics related job trends in the 2024 job market.
 
-- **KMeans Clustering** to identify segments of job postings
-- **Linear Regression** to examine the relationship between experience and salary
-- **Logistic Regression** to classify whether a job is remote
+We use:
 
-The purpose of this section is to understand how experience, salary, and work format are connected, and to provide practical implications for job seekers.
+- KMeans Clustering to segment job postings
+- Logistic Regression to classify whether a job is AI/ML/Data Science/Analytics related
 
-
-2. Load Libraries and Data
-
-We first import the necessary libraries and load the cleaned dataset.
-
+The goal is to understand how AI and data-related roles differ from other jobs and what this means for job seekers.
 
 ```{python}
 import pandas as pd
 import numpy as np
-import gdown
 import os
+import gdown
+
 import matplotlib.pyplot as plt
+
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
-from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-from sklearn.metrics import (
-    mean_squared_error, r2_score,
-    accuracy_score, f1_score, confusion_matrix, classification_report
-)
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report
+
+import plotly.io as pio
+pio.templates.default = "plotly_white"
+
+## Load Data
 
 url = "https://drive.google.com/uc?id=10I1L-q4C0vHT4NceidrJIjN1QkMTzFOz"
 output = "cleaned_data.csv"
@@ -56,178 +52,208 @@ if not os.path.exists(output):
     gdown.download(url, output, quiet=False)
 
 df = pd.read_csv(output)
+
 print(df.shape)
 df.head()
 ```
 
-The dataset contains a large number of job postings and multiple structured variables.
-This provides a sufficient basis for applying machine learning methods to study salary patterns, experience requirements, and remote work characteristics.
-
-
-3. Descriptive Statistics
-Before building models, we examine the summary statistics of the key numerical variables used in this section.
-
 ```{python}
-print(df[["SALARY", "SALARY_MID", "MIN_YEARS_EXPERIENCE"]].describe())
-```
+# Create AI / ML / Data Science classification target
 
-The summary statistics show substantial variation in both salary and experience requirements across job postings.
-This suggests that the market includes jobs at very different levels, which supports the use of clustering and predictive models.
+ai_ml_keywords = [
+    "ai", "artificial intelligence", "machine learning", "ml",
+    "data science", "data scientist", "deep learning",
+    "nlp", "natural language processing",
+    "computer vision",
+    "generative ai", "large language model", "llm",
+    "analytics", "business analyst", "data analyst"
+]
 
+df["TITLE_CLEAN"] = df["TITLE_CLEAN"].astype(str).str.lower()
 
-
-4. KMeans Clustering
-We apply KMeans clustering using Salary and Minimum Years of Experience to segment job postings into three groups.
-
-```{python}
-cluster_df = df[["SALARY", "MIN_YEARS_EXPERIENCE"]].dropna().copy()
-X_cluster = cluster_df[["SALARY", "MIN_YEARS_EXPERIENCE"]]
-
-scaler = StandardScaler()
-X_cluster_scaled = scaler.fit_transform(X_cluster)
-
-kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
-cluster_df["cluster"] = kmeans.fit_predict(X_cluster_scaled)
-cluster_df.head()
-```
-
-The clustering output groups jobs into three segments based on salary and experience.
-This means that the job market is not uniform. Instead, it contains different layers of opportunities with different levels of pay and required qualifications.
-
-```{python}
-plt.figure(figsize=(8, 5))
-plt.scatter(
-    cluster_df["MIN_YEARS_EXPERIENCE"],
-    cluster_df["SALARY"],
-    c=cluster_df["cluster"]
+df["IS_AI_ML_ROLE"] = df["TITLE_CLEAN"].apply(
+    lambda x: 1 if any(keyword in x for keyword in ai_ml_keywords) else 0
 )
-plt.xlabel("Minimum Years of Experience")
-plt.ylabel("Salary")
-plt.title("KMeans Clustering of Jobs by Experience and Salary")
-plt.show()
+
+print(df["IS_AI_ML_ROLE"].value_counts())
+print(df["IS_AI_ML_ROLE"].value_counts(normalize=True))
 ```
-
-The scatter plot shows three visually distinct salary bands.
-In general, jobs with lower experience requirements tend to fall into lower salary clusters, while jobs requiring more experience are more likely to appear in higher salary clusters.
-This suggests a clear segmentation of the labor market into entry-level, mid-level, and higher-paying positions.
-
-For job seekers, this result suggests that career progression is closely tied to experience accumulation.
-Entry-level roles may offer lower salaries, but they serve as important stepping stones toward better-paying positions.
-
-
-5. Linear Regression
-Next, we use Linear Regression to examine whether minimum years of experience can help explain salary midpoint.
+Approximately 34.5% of job postings are related to AI, Machine Learning, Data Science, or Analytics, while 65.5% are not.
 
 ```{python}
-reg_df = df[["MIN_YEARS_EXPERIENCE", "SALARY_MID"]].dropna().copy()
+# KMeans Clustering
 
-X = reg_df[["MIN_YEARS_EXPERIENCE"]]
-y = reg_df["SALARY_MID"]
+cluster_df = df[[
+    "SALARY_MID",
+    "MIN_YEARS_EXPERIENCE",
+    "IS_AI_ML_ROLE"
+]].dropna().copy()
+
+X_cluster = cluster_df[[
+    "SALARY_MID",
+    "MIN_YEARS_EXPERIENCE",
+    "IS_AI_ML_ROLE"
+]]
+
+# Standardize
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_cluster)
+
+# KMeans
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+cluster_df["cluster"] = kmeans.fit_predict(X_scaled)
+
+print(cluster_df["cluster"].value_counts())
+
+import plotly.express as px
+import plotly.io as pio
+
+fig = px.scatter(
+    cluster_df,
+    x="MIN_YEARS_EXPERIENCE",
+    y="SALARY_MID",
+    color="cluster",
+    title="KMeans Clustering: Job Segments",
+    labels={
+        "MIN_YEARS_EXPERIENCE": "Experience",
+        "SALARY_MID": "Salary"
+    }
+)
+
+fig.show()
+```
+
+KMeans clustering was applied to segment job postings based on salary, experience, and AI/ML classification.
+
+🔹 Key findings
+The results show three distinct clusters of jobs.
+One cluster represents lower-salary, lower-experience roles, likely entry-level positions.
+Another cluster represents mid-level roles with moderate salary and experience.
+The third cluster includes higher-salary positions with greater experience requirements, which are more likely to include AI/ML-related roles.
+
+🔹 Interpretation
+This indicates that the job market is segmented into clear tiers.
+As experience increases, jobs tend to move into higher-paying clusters.
+AI and data-related roles are more concentrated in higher-paying clusters.
+
+🔹 Job seeker insight
+Job seekers should view entry-level roles as stepping stones and focus on building skills to transition into higher-paying clusters, especially in AI and data-related fields.
+
+
+```{python}
+# Select features for classification
+
+features = [
+    "MIN_YEARS_EXPERIENCE",
+    "SALARY_MID",
+    "LOCATION",
+    "NAICS_2022_6_NAME"
+]
+
+clf_df = df[features + ["IS_AI_ML_ROLE"]].dropna()
+
+X = clf_df[features]
+y = clf_df["IS_AI_ML_ROLE"]
+
+print(clf_df.shape)
+
+# Preprocessing
+
+categorical_features = ["LOCATION", "NAICS_2022_6_NAME"]
+numeric_features = ["MIN_YEARS_EXPERIENCE", "SALARY_MID"]
+
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("num", StandardScaler(), numeric_features),
+        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features)
+    ]
+)
+
+# Model
+
+model = Pipeline(
+    steps=[
+        ("preprocessor", preprocessor),
+        ("classifier", LogisticRegression(max_iter=1000, class_weight="balanced"))
+    ]
+)
+
+from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-lr_model = LinearRegression()
-lr_model.fit(X_train, y_train)
+model.fit(X_train, y_train)
 
-y_pred = lr_model.predict(X_test)
+y_pred = model.predict(X_test)
 
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-r2 = r2_score(y_test, y_pred)
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report
 
-print("Regression Results")
-print("RMSE:", rmse)
-print("R²:", r2)
-print("Intercept:", lr_model.intercept_)
-print("Coefficient:", lr_model.coef_[0])
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("F1 Score:", f1_score(y_test, y_pred))
+
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
 ```
 
-The regression results show a positive coefficient, indicating that jobs requiring more experience tend to have higher salary midpoints.
-However, the R² value is relatively low, which means that experience alone explains only part of the salary variation.
-Other factors such as job title, location, industry, and technical skills likely also influence salary.
+🔹 What the model does
+This model predicts whether a job posting is AI/ML/Data Science related based on experience, salary, location, and industry.
+
+🔹 Key Findings
+The model achieves an accuracy of approximately 68.5% and an F1 score of 0.61, indicating moderate predictive performance.
+It is better at identifying AI-related roles than random guessing, but still makes some classification errors.
+
+🔹 Interpretation
+The results suggest that AI/ML-related roles are influenced by multiple factors such as industry and location, rather than salary and experience alone.
+The relatively lower precision indicates that some non-AI roles share similar characteristics with AI roles, making classification challenging.
+
+🔹 Job Seeker Insight
+Job seekers aiming for AI/ML careers should not rely solely on salary or experience as indicators.
+Instead, they should focus on acquiring relevant technical skills and targeting industries where AI roles are more prevalent.
 
 ```{python}
-plt.figure(figsize=(8, 5))
-plt.scatter(X_test, y_test)
-plt.plot(X_test, y_pred)
-plt.xlabel("Minimum Years of Experience")
-plt.ylabel("Salary Mid")
-plt.title("Linear Regression: Experience vs Salary Mid")
-plt.show()
-```
+from sklearn.ensemble import RandomForestClassifier
 
-The regression plot shows an overall upward trend, meaning salary midpoint tends to rise as required experience increases.
-At the same time, the data points are widely scattered around the fitted line, which indicates that salary is influenced by additional variables beyond experience.
-
-This model suggests that experience matters, but experience alone is not enough to guarantee a high salary.
-Job seekers should not only accumulate experience, but also improve technical skills, target stronger industries, and seek more valuable job titles.
-
-
-6. Logistic Regression: Remote Job Classification
-Finally, we build a Logistic Regression model to classify whether a job is remote based on:
-Minimum Years of Experience
-Salary Mid
-
-```{python}
-print(df["REMOTE_TYPE_NAME"].dropna().value_counts().head(10))
-clf_df = df[["MIN_YEARS_EXPERIENCE", "SALARY_MID", "REMOTE_TYPE_NAME"]].dropna().copy()
-
-clf_df["is_remote"] = clf_df["REMOTE_TYPE_NAME"].apply(lambda x: 1 if x == "Remote" else 0)
-
-X_cls = clf_df[["MIN_YEARS_EXPERIENCE", "SALARY_MID"]]
-y_cls = clf_df["is_remote"]
-
-X_train_cls, X_test_cls, y_train_cls, y_test_cls = train_test_split(
-    X_cls, y_cls, test_size=0.2, random_state=42
+rf_model = Pipeline(
+    steps=[
+        ("preprocessor", preprocessor),
+        ("classifier", RandomForestClassifier(
+            n_estimators=200,
+            max_depth=10,
+            class_weight="balanced",   # ⭐关键
+            random_state=42
+        ))
+    ]
 )
 
-log_model = LogisticRegression(max_iter=1000, class_weight='balanced')
-log_model.fit(X_train_cls, y_train_cls)
+# Train model
+rf_model.fit(X_train, y_train)
 
-y_pred_cls = log_model.predict(X_test_cls)
+# Predict
+y_pred_rf = rf_model.predict(X_test)
 
-print("Classification Results")
-print("Accuracy:", accuracy_score(y_test_cls, y_pred_cls))
+# Evaluation
+print("Random Forest Results")
+print("Accuracy:", accuracy_score(y_test, y_pred_rf))
+print("F1 Score:", f1_score(y_test, y_pred_rf))
+
 print("\nConfusion Matrix:")
-print(confusion_matrix(y_test_cls, y_pred_cls))
+print(confusion_matrix(y_test, y_pred_rf))
+
 print("\nClassification Report:")
-print(classification_report(y_test_cls, y_pred_cls))
+print(classification_report(y_test, y_pred_rf))
 ```
 
-The model achieves an accuracy of about 46.9%, which indicates relatively weak predictive performance.
-This suggests that salary midpoint and experience requirement alone are not strong enough to accurately predict whether a job is remote.
-In other words, remote work is likely influenced by other factors such as company policy, occupation type, industry, and organizational work style.
+🔹 Model Comparison
+We compared Logistic Regression and Random Forest for classifying AI/ML-related jobs.
+While both models achieved similar accuracy (around 68%), the Random Forest model produced a slightly higher F1 score, indicating better balance between precision and recall.
+This suggests that the relationship between job features and AI classification is not purely linear, and tree-based models can better capture complex patterns.
 
-The confusion matrix shows that the model makes a considerable number of misclassifications for both remote and non-remote jobs.
-This means the distinction between remote and non-remote positions cannot be captured well using only these two numerical features.
-
-The classification report also shows that the model performs unevenly across classes.
-This further confirms that remote status depends on more complex factors than salary and experience alone.
-
-For job seekers, this finding is important: remote work opportunities are not simply associated with higher pay or more experience.
-Instead, candidates looking for remote positions should pay closer attention to:
-industry and job function
-company culture and remote policy
-firms known for flexible work arrangements
-
-
-7. Overall Findings
-Across the three models, several key insights emerge:
-The job market can be segmented into different clusters based on salary and experience.
-Experience has a positive relationship with salary, but it explains only part of salary differences.
-Remote work status is difficult to predict using only salary and experience.
-
-
-8. Recommendations for Job Seekers
-Based on the results above, we recommend that job seekers:
-Build experience gradually and strategically
-Develop technical and analytical skills in addition to years of experience
-Consider industry, occupation, and company policy when targeting remote jobs
-Focus not only on salary, but also on long-term career progression
-
-
-9. Conclusion
-Overall, the machine learning analysis provides useful insights into how the 2024 job market is structured.
-KMeans clustering shows clear segmentation across job levels, linear regression confirms that experience is positively associated with salary, and logistic regression suggests that remote work depends on more than simple numerical characteristics.
-These findings help job seekers better understand how to position themselves in the job market and what factors matter most for salary growth and remote opportunities.
+Overall, the machine learning analysis reveals that the job market is clearly segmented by experience and salary, with AI/ML-related roles more concentrated in higher-paying clusters.
+The classification models show that predicting AI-related jobs requires multiple features such as industry and location, rather than relying on salary and experience alone.
+Among the models tested, Random Forest performs slightly better, suggesting that nonlinear relationships play an important role in distinguishing AI-related roles.
+These findings highlight the importance of targeting the right industries, developing relevant technical skills, and understanding market structure for job seekers aiming to enter AI and data-related careers.
