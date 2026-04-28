@@ -210,3 +210,4 @@ __marimo__/
 lightcast_2024.csv
 lightcast_2024.csv
 *.csv
+**/*.quarto_ipynb
