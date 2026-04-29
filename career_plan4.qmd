@@ -182,7 +182,7 @@ tier_counts.columns = ["Tier", "Count"]
 ```
 
 ***
-## Section E - NLP Analysis — Job Description Insights
+## NLP Analysis — Job Description Insights
 #This section extends the analysis beyond structured variables by applying Natural Language Processing (NLP) techniques to job descriptions.
 #The goal is to extract key skills, understand employer requirements, and identify hidden patterns in unstructured text data.
 
