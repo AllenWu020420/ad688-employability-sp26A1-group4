@@ -4701,29 +4701,10 @@ vertical-align: -.125em;
     <a class="nav-link" href="./ml_methods.html"> 
 <span class="menu-text">ML Methods</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-career-strategy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Career Strategy</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-career-strategy">    
-        <li>
-    <a class="dropdown-item" href="./career_plan.html">
- <span class="dropdown-text">AI Tier Classification</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="./career_plan4.html" aria-current="page"> 
+<span class="menu-text">Career Strategy</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./career_plan2.html">
- <span class="dropdown-text">AI/ML Core Deep Dive</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./career_plan3.html">
- <span class="dropdown-text">Temporal &amp; Industry Trends</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./career_plan4.html">
- <span class="dropdown-text">Key Findings &amp; Summary</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -4740,8 +4721,7 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section-d---key-findings-summary" id="toc-section-d---key-findings-summary" class="nav-link active" data-scroll-target="#section-d---key-findings-summary">Section D - Key Findings Summary</a></li>
-  <li><a href="#section-e---nlp-analysis-job-description-insights" id="toc-section-e---nlp-analysis-job-description-insights" class="nav-link" data-scroll-target="#section-e---nlp-analysis-job-description-insights">Section E - NLP Analysis — Job Description Insights</a></li>
+  <li><a href="#section-e---nlp-analysis-job-description-insights" id="toc-section-e---nlp-analysis-job-description-insights" class="nav-link active" data-scroll-target="#section-e---nlp-analysis-job-description-insights">Section E - NLP Analysis — Job Description Insights</a></li>
   </ul>
 </nav>
     </div>
@@ -4774,129 +4754,11 @@ vertical-align: -.125em;
 
 
 <hr>
-<section id="section-d---key-findings-summary" class="level2">
-<h2 class="anchored" data-anchor-id="section-d---key-findings-summary">Section D - Key Findings Summary</h2>
-<div id="ca0f48d9" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-stdout">
-<pre><code>======================================================================
- KEY FINDINGS — AD688 Final EDA
-======================================================================
-
-DATASET OVERVIEW
-----------------------------------
-- Raw: 72,498 rows × 131 columns  |  Cleaned: 67,572 rows × 117 columns
-- Date range: 2024-05-01 → 2024-09-30  (5 months)
-- Scope: data / analytics / tech occupations (Lightcast pre-filter)
-
-
-TOPIC 2.1 — AI vs. Non-AI Careers
-----------------------------------
-1. Classification breakdown (3-tier combined classifier):
-   - Traditional Analytics / BI        57,870  (85.6%)
-   - Advanced Analytics / Engineering   9,398  (13.9%)
-   - AI/ML Core                           304   (0.4%)
-   → Only 1.8% of postings explicitly list specific ML framework skills
-     (TensorFlow, PyTorch, Keras, etc.).
-   → All 304 AI/ML Core jobs were flagged by STRICT TITLE KEYWORDS —
-     the Lightcast LOT taxonomy flagged ZERO as AI/ML Core,
-     confirming the taxonomy is too broad to distinguish true AI roles.
-
-2. Salary gradient (confirmed):
-   Advanced Analytics / Engineering   Median ,000  (P25 k  P75 k)
-   AI/ML Core                         Median ,000  (P25 $ 97k  P75 k)
-   Traditional Analytics / BI         Median ,000  (P25 $ 75k  P75 k)
-   → Counter-intuitive: Advanced Analytics (architects, senior data engineers)
-     out-earns labeled &#39;AI/ML Core&#39; roles — likely due to seniority mix.
-     The salary premium for AI roles exists but is less extreme than expected.
-
-3. Remote work — SURPRISING finding:
-   Fully Remote:  AI/ML Core 6.6%  |  Advanced 25.0%  |  Traditional 16.4%
-   On-Site:       AI/ML Core 13.2% |  Advanced  1.1%  |  Traditional  1.6%
-   → AI/ML Core roles are the LEAST remote and MOST on-site of the three tiers.
-     Advanced Analytics/Engineering is the most remote-friendly tier (25%).
-     ~78% of all postings do not specify remote type.
-
-
-SECTION B — AI/ML CORE DEEP DIVE
----------------------------------
-4. Monthly growth trend (AI/ML Core):
-   May 51 → Jun 60 → Jul 60 → Aug 65 → Sep 68  (+33% over 5 months)
-   Market share: 0.37% (May) → 0.47% (Sep)
-   → Despite tiny absolute numbers, AI/ML Core postings show a consistent
-     upward trend throughout the observation window.
-
-5. Geographic distribution (AI/ML Core volume):
-   Top states: Texas, California, Virginia, North Carolina, Illinois,
-               Maryland, Pennsylvania, New York
-   Top by concentration: Maryland, Washington D.C., Connecticut, Alabama,
-               Minnesota lead in AI/ML Core share relative to total postings.
-   → AI/ML Core is NOT exclusively a coastal/tech-hub phenomenon.
-
-6. Industry distribution (AI/ML Core):
-   Highest AI/ML Core CONCENTRATION by industry (min 200 postings):
-   Transportation &amp; Warehousing &gt; Mining/Oil &amp; Gas &gt; Information &gt; Finance
-   → Surprisingly, Transportation &amp; Warehousing has the highest ML-tool
-     requirement rate (1.44%), ahead of Information (0.92%) and Finance (0.90%).
-     This likely reflects autonomous vehicle, route optimization, and logistics AI.
-
-7. Top companies hiring AI/ML Core: Honu Services, Capgemini, Penske,
-   Deloitte, Disney, Mayo Clinic, Nestlé, Cognizant, US Bank, Travelers
-   → Mix of consulting firms, healthcare, automotive, and financial services.
-
-8. Top skills in AI/ML Core: Data Science, Machine Learning, Python,
-   Statistics, AI, Mathematics, AWS, Azure, Generative AI, Computer Science
-   → Core ML skills + cloud platforms dominate; Generative AI already appears
-     in top 25 skills, reflecting 2024 market shift.
-
-
-TOPIC 2.5 — BA / Data Science / ML Trends
-------------------------------------------
-9.  Overall posting volume:
-    May 13,897 → Jun 13,159 → Jul 11,904 → Aug 14,221 → Sep 14,390
-    → Volume dipped in July (summer slowdown) but recovered strongly by Sep.
-
-10. Occupation growth (May → Sep 2024):
-    Business / Management Analyst        +51.4%  (fastest growing)
-    Data / Data Mining Analyst           +11.0%
-    Clinical Analyst                      -3.4%
-    Business Intelligence Analyst         -4.5%
-    Computer Systems Engineer/Architect  -11.2%
-    Market Research Analyst              -15.0%
-    → Demand for generalist business analytics roles surged while
-      specialized engineering and BI roles declined.
-
-11. Industry growth (May → Sep 2024):
-    Information                           +33.2%
-    Finance and Insurance                 +15.2%
-    Wholesale Trade                       +14.5%
-    Health Care and Social Assistance      +7.7%
-    Professional/Scientific/Technical     -1.9%
-    Administrative &amp; Support Services     -5.8%
-    → Information and Finance are the fastest-growing employers of
-      data/tech talent; traditionally dominant PSTS sector is flat.
-
-12. AI/ML tool skill penetration (% of postings, by industry):
-    Transportation &amp; Warehousing 1.44% | Mining 1.22% | Information 0.92%
-    Finance 0.90% | PSTS 0.67% | Education 0.66%
-    → Overall penetration is very low (&lt;2%) and FLAT across the 5-month
-      window — AI adoption in job postings was NOT accelerating in 2024H2.
-
-13. Salary trend:
-    May ,500 → Jun ,000 → Jul ,200 → Aug ,685 → Sep ,000
-    → Salary dipped during summer (typical hiring cycle pattern) then
-      partially recovered, ending below the May peak. No clear upward trend
-      in the short observation window.
-
-======================================================================</code></pre>
-</div>
-</div>
-<hr>
-</section>
 <section id="section-e---nlp-analysis-job-description-insights" class="level2">
 <h2 class="anchored" data-anchor-id="section-e---nlp-analysis-job-description-insights">Section E - NLP Analysis — Job Description Insights</h2>
 <p>#This section extends the analysis beyond structured variables by applying Natural Language Processing (NLP) techniques to job descriptions. #The goal is to extract key skills, understand employer requirements, and identify hidden patterns in unstructured text data.</p>
-<div id="42e49cff" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="921d9aa4" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <div>
 
@@ -5018,8 +4880,8 @@ TOPIC 2.5 — BA / Data Science / ML Trends
 </div>
 </div>
 <p>##1. Word Frequency Table ##This table shows the most frequently used words in the job posting text. The most common words are analyst, data, consultant, SAP, architect, and senior. This suggests that the dataset is heavily focused on business analytics, enterprise systems, consulting, and technical business roles. Words such as SAP, Oracle, ERP, and enterprise also indicate that many employers are looking for candidates with enterprise software and business systems knowledge, not only general data skills.</p>
-<div id="bfd8b0a2" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="106bc45b" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <div>
 
@@ -5141,8 +5003,8 @@ TOPIC 2.5 — BA / Data Science / ML Trends
 </div>
 </div>
 <p>##2. TF-IDF Keyword Table ##The TF-IDF results are similar to the word frequency results, but they give more weight to words that are important across the text rather than just repeated often. Analyst and data still have the highest scores, which confirms that analytics-related roles dominate the dataset. The high scores for SAP, consultant, architect, and enterprise show that specialized business technology skills are important in this job market. Compared with simple word counts, TF-IDF gives a better sense of which terms are more meaningful for understanding job descriptions.</p>
-<div id="40b4c855" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="09dd338c" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <div>
 
@@ -5199,7 +5061,7 @@ TOPIC 2.5 — BA / Data Science / ML Trends
 </div>
 </div>
 <p>##3. Skill Keyword Count and Bar Chart ##The skill keyword chart shows that SQL appears most often, followed by communication and Excel. This means employers are not only looking for technical ability, but also business communication and reporting skills. Python, Power BI, Tableau, and machine learning appear less frequently in this result, which may suggest that many postings are more focused on analytics, database querying, and business reporting than advanced machine learning. For students, SQL and communication should be treated as core employability skills.</p>
-<div id="61a5aecc" class="cell" data-execution_count="10">
+<div id="66065407" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -5208,8 +5070,8 @@ TOPIC 2.5 — BA / Data Science / ML Trends
 </div>
 </div>
 </div>
-<div id="199afecd" class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="6868dda2" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <div>
 

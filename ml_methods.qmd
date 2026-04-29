@@ -74,7 +74,7 @@ ai_ml_keywords = [
 df["TITLE_CLEAN"] = df["TITLE_CLEAN"].astype(str).str.lower()
 
 df["IS_AI_ML_ROLE"] = df["TITLE_CLEAN"].apply(
-    lambda x: 1 if any(keyword in x for keyword in ai_ml_keywords) else 0
+    lambda x: 1 if isinstance(x, str) and any(keyword in x for keyword in ai_ml_keywords) else 0
 )
 
 print(df["IS_AI_ML_ROLE"].value_counts())

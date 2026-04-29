@@ -25,16 +25,8 @@ website:
         text: "Skill Gap Analysis"
       - href: ml_methods.qmd
         text: "ML Methods"
-      - text: "Career Strategy"
-        menu:
-          - text: "AI Tier Classification"
-            href: career_plan.qmd
-          - text: "AI/ML Core Deep Dive"
-            href: career_plan2.qmd
-          - text: "Temporal & Industry Trends"
-            href: career_plan3.qmd 
-          - text: "Key Findings & Summary"
-            href: career_plan4.qmd                       
+      - href: career_plan4.qmd
+        text: "Career Strategy"               
           
 format:
   html:
